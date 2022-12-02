@@ -8,6 +8,28 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Npgsql" Version="7.0.0" />
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="MediatR" Version="11.1.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Npgsql" />
+    <None Remove="Dapper" />
+    <None Remove="BCrypt.Net-Next" />
+    <None Remove="MediatR" />
+    <None Remove="MediatR.Extensions.Microsoft.DependencyInjection" />
+    <None Remove="Features\" />
+    <None Remove="Features\Common\" />
+    <None Remove="Features\Common\Middleware\" />
+    <None Remove="Features\User\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Features\" />
+    <Folder Include="Features\Common\" />
+    <Folder Include="Features\Common\Middleware\" />
+    <Folder Include="Features\User\" />
+  </ItemGroup>
 </Project>

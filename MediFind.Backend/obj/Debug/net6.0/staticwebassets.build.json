@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Rrl3vayYGPD7c9hW24YrtCIMYfmcTAi4ONSRMqFYM6M=",
+  "Source": "MediFind.Backend",
+  "BasePath": "_content/MediFind.Backend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

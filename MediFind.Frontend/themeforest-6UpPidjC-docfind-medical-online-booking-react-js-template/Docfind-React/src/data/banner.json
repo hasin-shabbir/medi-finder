@@ -1,0 +1,14 @@
+[
+    {
+        "id":1,
+        "image":"assets/img/home-1/HomeMainImage.png",
+        "subtitle":"First in UAE",
+        "title":"Easy & Fast Way <br> To Know Your Drug"
+    },
+    {
+        "id":2,
+        "image":"assets/img/home-1/HomeMainImage2.png",
+        "subtitle":"Easy Access",
+        "title":"Just Scan the Code <br> On Your Drug Package."
+    }
+]

@@ -26,6 +26,7 @@
     <None Remove="Features\Common\Middleware\" />
     <None Remove="Features\User\" />
     <None Remove="Features\Common\Attributes\" />
+    <None Remove="Features\Drug\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\" />
@@ -33,5 +34,6 @@
     <Folder Include="Features\Common\Middleware\" />
     <Folder Include="Features\User\" />
     <Folder Include="Features\Common\Attributes\" />
+    <Folder Include="Features\Drug\" />
   </ItemGroup>
 </Project>

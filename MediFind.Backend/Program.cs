@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using MediFind.Backend;
+using MediFind.Backend.Features.Common.Middleware;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,9 +29,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+app.UseMiddleware<ExceptionMiddlware>();
+app.UseMiddleware<AuthenticationMiddleware>();
 
-app.UseAuthorization();
+//app.UseHttpsRedirection();
+
+//app.UseAuthorization();
 
 app.MapControllers();
 

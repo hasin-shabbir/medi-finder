@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using static MediFind.Backend.Features.User.LoginUser;
+using static MediFind.Backend.Features.User.SignInUser;
+using static MediFind.Backend.Features.User.SignUpUser;
 
 namespace MediFind.Backend.Features.User;
 
@@ -15,8 +16,14 @@ public class UserController
         _mediator = mediator;
     }
 
-    [HttpPost("login")]
-    public async Task<LoginUserResponse> LoginUser(LoginUserCommand command)
+    [HttpPost("sign-in")]
+    public async Task<SignInUserResponse> SignInUser(SignInUserCommand command)
+    {
+        return await _mediator.Send(command);
+    }
+
+    [HttpPost("sign-up")]
+    public async Task<SignUpUserResponse> SignUpUser(SignUpUserCommand command)
     {
         return await _mediator.Send(command);
     }

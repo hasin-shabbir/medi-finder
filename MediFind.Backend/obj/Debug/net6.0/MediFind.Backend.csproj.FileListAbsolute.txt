@@ -25,3 +25,9 @@
 /Users/asali/Documents/GitHub/medi-finder/MediFind.Backend/obj/Debug/net6.0/MediFind.Backend.pdb
 /Users/asali/Documents/GitHub/medi-finder/MediFind.Backend/obj/Debug/net6.0/MediFind.Backend.genruntimeconfig.cache
 /Users/asali/Documents/GitHub/medi-finder/MediFind.Backend/obj/Debug/net6.0/ref/MediFind.Backend.dll
+/Users/asali/Documents/GitHub/medi-finder/MediFind.Backend/bin/Debug/net6.0/BCrypt.Net-Next.dll
+/Users/asali/Documents/GitHub/medi-finder/MediFind.Backend/bin/Debug/net6.0/Dapper.dll
+/Users/asali/Documents/GitHub/medi-finder/MediFind.Backend/bin/Debug/net6.0/MediatR.dll
+/Users/asali/Documents/GitHub/medi-finder/MediFind.Backend/bin/Debug/net6.0/MediatR.Contracts.dll
+/Users/asali/Documents/GitHub/medi-finder/MediFind.Backend/bin/Debug/net6.0/MediatR.Extensions.Microsoft.DependencyInjection.dll
+/Users/asali/Documents/GitHub/medi-finder/MediFind.Backend/bin/Debug/net6.0/Npgsql.dll

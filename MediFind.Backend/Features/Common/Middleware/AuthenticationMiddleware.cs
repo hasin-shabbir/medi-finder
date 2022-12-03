@@ -21,13 +21,13 @@ public class AuthenticationMiddleware
             long userId = 0;
 
             if (!string.IsNullOrWhiteSpace(sessionId))
-                userId = (await repositoryManager.User.GetUserBySessionId(sessionId)).UserId;
+                userId = await repositoryManager.User.GetUserIdBySessionId(sessionId);
 
             if (userId < 1)
                 throw new BadHttpRequestException("Invalid appuser session id", StatusCodes.Status401Unauthorized);
             else
             {
-                context.Items["AppuserId"] = userId;
+                context.Items["UserId"] = userId;
             }
         }
 

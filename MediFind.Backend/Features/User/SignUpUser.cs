@@ -1,18 +1,22 @@
-﻿using System.Security.Cryptography;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Security.Cryptography;
 using MediatR;
 using static BCrypt.Net.BCrypt;
 
 namespace MediFind.Backend.Features.User;
 
-public class LoginUser
+public class SignUpUser
 {
-    public class LoginUserCommand : IRequest<LoginUserResponse>
+    public class SignUpUserCommand : IRequest<SignUpUserResponse>
     {
+        [EmailAddress]
         public string Email { get; set; } = null!;
+        [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$")]
         public string Password { get; set; } = null!;
+        public string FullName { get; set; } = null!;
     }
 
-    public class LoginUserResponse
+    public class SignUpUserResponse
     {
         public long UserId { get; set; }
         public string Email { get; set; } = null!;
@@ -22,7 +26,7 @@ public class LoginUser
         public string SessionId { get; set; } = null!;
     }
 
-    public class Handler : IRequestHandler<LoginUserCommand, LoginUserResponse>
+    public class Handler : IRequestHandler<SignUpUserCommand, SignUpUserResponse>
     {
         private readonly RepositoryManager _repositoryManager;
         private readonly int _sessionIdBytes;
@@ -35,18 +39,30 @@ public class LoginUser
             _sessionIdBase64Length = (int)Math.Ceiling(_sessionIdBytes * 8 / 6f);
         }
 
-        public async Task<LoginUserResponse> Handle(LoginUserCommand command, CancellationToken cancellationToken)
+        public async Task<SignUpUserResponse> Handle(SignUpUserCommand command, CancellationToken cancellationToken)
         {
             UserModel user = await _repositoryManager.User.GetUserByEmail(command.Email);
 
-            if (user == null) throw new BadHttpRequestException("Username does not exist", 400);
-
-            if (!Verify(command.Password, user.PasswordHash)) throw new BadHttpRequestException("Password is incorrect", 400);
+            if (user != null) throw new BadHttpRequestException("Email is alredy registred", 400);
 
             string sessionId = Convert.ToBase64String(RandomNumberGenerator.GetBytes(_sessionIdBytes))[.._sessionIdBase64Length];
-            await _repositoryManager.User.CreateSession(sessionId, user.UserId);
+            string passwordHash = HashPassword(command.Password);
 
-            LoginUserResponse response = new()
+            user = new()
+            {
+                UserId = 0,
+                Email = command.Email,
+                PasswordHash = passwordHash,
+                FullName = command.FullName,
+                IsAdmin = false,
+                CreatedOn = DateTime.UtcNow,
+            };
+
+            long userId = await _repositoryManager.User.CreateUser(user);
+
+            await _repositoryManager.User.CreateSession(sessionId, userId);
+
+            SignUpUserResponse response = new()
             {
                 UserId = user.UserId,
                 Email = user.Email,

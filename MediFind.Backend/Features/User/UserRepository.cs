@@ -12,14 +12,15 @@ public class UserRepository
         _dbContext = dbContext;
     }
 
-    public async Task CreateUser(UserModel user)
+    public async Task<long> CreateUser(UserModel user)
     {
         using IDbConnection connection = _dbContext.GetConnection();
 
         const string sql = @"INSERT INTO user_ (email, password_hash, full_name, is_admin)
-                             VALUES (@Email, @PasswordHash, @FullName, @IsAdmin)";
+                             VALUES (@Email, @PasswordHash, @FullName, @IsAdmin)
+                             RETURNING user_id";
 
-        await connection.ExecuteAsync(sql, user);
+        return await connection.ExecuteScalarAsync<long>(sql, user);
     }
 
     public async Task CreateSession(string sessionId, long userId)
@@ -54,5 +55,16 @@ public class UserRepository
                              WHERE email = @email";
 
         return await connection.QuerySingleOrDefaultAsync<UserModel>(sql, new { email });
+    }
+
+    public async Task<long> GetUserIdBySessionId(string sessionId)
+    {
+        using IDbConnection connection = _dbContext.GetConnection();
+
+        const string sql = @"SELECT user_id
+                             FROM session_
+                             WHERE user_id = @userId";
+
+        return await connection.ExecuteScalarAsync<long>(sql, new { sessionId });
     }
 }

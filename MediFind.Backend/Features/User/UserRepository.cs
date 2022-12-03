@@ -67,4 +67,14 @@ public class UserRepository
 
         return await connection.ExecuteScalarAsync<long>(sql, new { sessionId });
     }
+
+    public async Task DeleteSession(string sessionId)
+    {
+        using IDbConnection connection = _dbContext.GetConnection();
+
+        const string sql = @"DELETE FROM session_
+                             WHERE session_id = @sessionId";
+
+        await connection.ExecuteAsync(sql, new { sessionId });
+    }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using static MediFind.Backend.Features.User.SignInUser;
 using static MediFind.Backend.Features.User.SignUpUser;
+using static MediFind.Backend.Features.User.SignOutUser;
 
 namespace MediFind.Backend.Features.User;
 
@@ -28,5 +29,10 @@ public class UserController
         return await _mediator.Send(command);
     }
 
+    [HttpPost("sign-out")]
+    public async Task<SignOutUserResponse> SignOutUser(SignOutUserCommand command)
+    {
+        return await _mediator.Send(command);
+    }
 
 }

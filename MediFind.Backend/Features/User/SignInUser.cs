@@ -1,7 +1,6 @@
 ﻿using System.Security.Cryptography;
 using MediatR;
 using static BCrypt.Net.BCrypt;
-using static MediFind.Backend.Features.User.SignInUser;
 
 namespace MediFind.Backend.Features.User;
 

@@ -8,7 +8,7 @@ namespace MediFind.Backend.Features.User;
 
 [Route("api/users")]
 [ApiController]
-public class UserController
+public class UserController : ControllerBase
 {
     private readonly IMediator _mediator;
 

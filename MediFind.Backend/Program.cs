@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using MediFind.Backend;
 using MediFind.Backend.Features.Common.Middleware;
+using Microsoft.AspNetCore.HttpOverrides;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,6 +32,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseMiddleware<ExceptionMiddlware>();
 app.UseMiddleware<AuthenticationMiddleware>();
+
+
+// Added based on Microsoft's documentation for setting up nginx reverse proxy server
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+});
 
 //app.UseHttpsRedirection();
 

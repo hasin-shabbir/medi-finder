@@ -19,7 +19,6 @@ public class AuthenticationMiddleware
         {
             string sessionId = context.Request.Headers["Authorization"];
             long userId = 0;
-            Console.WriteLine(sessionId);
 
             if (!string.IsNullOrWhiteSpace(sessionId))
                 userId = await repositoryManager.User.GetUserIdBySessionId(sessionId);

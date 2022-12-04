@@ -68,5 +68,20 @@ public class DrugController : ControllerBase
 
         await _repositoryManager.Drug.UpdateDrug(drug);
     }
+
+    [HttpDelete("{drugId}")]
+    [Auth]
+    public async Task DeleteDrug([FromRoute] long drugId)
+    {
+        long? userId = (long?)HttpContext.Items["UserId"];
+
+        if (userId == null)
+            throw new BadHttpRequestException("", StatusCodes.Status401Unauthorized);
+
+        if (!(await _repositoryManager.User.GetUserById((long)userId)).IsAdmin)
+            throw new BadHttpRequestException("", StatusCodes.Status401Unauthorized);
+
+        await _repositoryManager.Drug.DeleteDrug(drugId);
+    }
 }
 

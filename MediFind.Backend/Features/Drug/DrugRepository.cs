@@ -93,5 +93,15 @@ public class DrugRepository
         if (drug.Ingredients != null)
             await connection.ExecuteAsync("UPDATE drug SET ingredients = @Ingredients WHERE drug_id  = @DrugId", drug);
     }
+
+    public async Task DeleteDrug(long drugId)
+    {
+        using IDbConnection connection = _dbContext.GetConnection();
+
+        const string sql = @"DELETE FROM drug
+                             WHERE drug_id = @drugId";
+
+        await connection.ExecuteAsync(sql, new { drugId });
+    }
 }
 

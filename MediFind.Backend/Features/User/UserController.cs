@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using static MediFind.Backend.Features.User.SignInUser;
 using static MediFind.Backend.Features.User.SignUpUser;
 using static MediFind.Backend.Features.User.SignOutUser;
+using MediFind.Backend.Features.Common.Attributes;
+using static BCrypt.Net.BCrypt;
+using MediFind.Backend.Features.Drug;
 
 namespace MediFind.Backend.Features.User;
 
@@ -11,10 +14,12 @@ namespace MediFind.Backend.Features.User;
 public class UserController : ControllerBase
 {
     private readonly IMediator _mediator;
+    private readonly RepositoryManager _repositoryManager;
 
-    public UserController(IMediator mediator)
+    public UserController(IMediator mediator, RepositoryManager repositoryManager)
     {
         _mediator = mediator;
+        _repositoryManager = repositoryManager;
     }
 
     [HttpPost("sign-in")]
@@ -35,4 +40,36 @@ public class UserController : ControllerBase
         return await _mediator.Send(command);
     }
 
+    [HttpPost("self/saved-drugs/{drugId}")]
+    [Auth]
+    public async Task SaveDrug([FromRoute] long drugId)
+    {
+        long? userId = (long?)HttpContext.Items["UserId"];
+
+        if (userId == null) throw new BadHttpRequestException("", StatusCodes.Status401Unauthorized);
+
+        await _repositoryManager.User.SaveDrug((long)userId, drugId);
+    }
+
+    [HttpPut("self")]
+    [Auth]
+    public async Task ChangePassword([FromBody] string password)
+    {
+        long? userId = (long?)HttpContext.Items["UserId"];
+
+        if (userId == null) throw new BadHttpRequestException("", StatusCodes.Status401Unauthorized);
+
+        await _repositoryManager.User.UpdatePasswordHash((long)userId, HashPassword(password));
+    }
+
+    [HttpGet("self/saved-drugs")]
+    [Auth]
+    public async Task<IEnumerable<DrugModel>> GetSavedDrugs()
+    {
+        long? userId = (long?)HttpContext.Items["UserId"];
+
+        if (userId == null) throw new BadHttpRequestException("", StatusCodes.Status401Unauthorized);
+
+        return await _repositoryManager.User.GetSavedDrugs((long)userId);
+    }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Data;
 using Dapper;
+using MediFind.Backend.Features.Drug;
 
 namespace MediFind.Backend.Features.User;
 
@@ -73,7 +74,7 @@ public class UserRepository
 
         const string sql = @"SELECT user_id
                              FROM session_
-                             WHERE user_id = @userId";
+                             WHERE session_id = @sessionId";
 
         return await connection.ExecuteScalarAsync<long>(sql, new { sessionId });
     }
@@ -86,5 +87,39 @@ public class UserRepository
                              WHERE session_id = @sessionId";
 
         await connection.ExecuteAsync(sql, new { sessionId });
+    }
+
+    public async Task SaveDrug(long userId, long drugId)
+    {
+        using IDbConnection connection = _dbContext.GetConnection();
+
+        const string sql = @"INSERT INTO user_saved_drug (user_id, drug_id)
+                             VALUES (@userId, @drugId)";
+
+        await connection.ExecuteAsync(sql, new { userId, drugId });
+    }
+
+    public async Task UpdatePasswordHash(long userId, string passwordHash)
+    {
+        using IDbConnection connection = _dbContext.GetConnection();
+
+        const string sql = @"UPDATE user_
+                             SET password_hash = @passwordHash
+                             WHERE user_id = @userId";
+
+        await connection.ExecuteAsync(sql, new { userId, passwordHash });
+    }
+
+    public async Task<IEnumerable<DrugModel>> GetSavedDrugs(long userId)
+    {
+        using IDbConnection connection = _dbContext.GetConnection();
+
+        const string sql = @"SELECT drug.drug_id, drug.drug_name, drug.manufacturer
+                             FROM drug
+                             INNER JOIN user_saved_drug
+                             ON user_saved_drug.drug_id = drug.drug_id
+                             WHERE user_saved_drug.user_id = @userId";
+
+        return await connection.QueryAsync<DrugModel>(sql, new { userId });
     }
 }

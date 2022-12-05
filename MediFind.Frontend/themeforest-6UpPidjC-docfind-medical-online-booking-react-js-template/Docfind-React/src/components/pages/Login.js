@@ -24,7 +24,7 @@ const Login = () => {
       }),
     };
     try {
-      console.log(url);
+      console.log(options);
       const response = await fetch(url, options);
       console.log(response);
       const body = await response.json();
@@ -65,7 +65,7 @@ const Login = () => {
             />
           </div>
           <div className={styles.formGroup}>
-            <button name="submit" onClick={submitLoginForm}>
+            <button type="button" onClick={submitLoginForm}>
               Log in
             </button>
           </div>

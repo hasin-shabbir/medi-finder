@@ -16,8 +16,8 @@ public class DrugRepository
     {
         using IDbConnection connection = _dbContext.GetConnection();
 
-        const string sql = @"INSERT INTO drug (drug_name, manufacturer, purpose, usage_, dosage, side_effects, storage_, avoid_reasons, details)
-                             VALUES (@DrugName, @Manufacturer, @Purpose, @Usage, @Dosage, @SideEffects, @Storage, @AvoidReasons, @Details)";
+        const string sql = @"INSERT INTO drug (drug_name, manufacturer, purpose, usage_, dosage, side_effects, storage_, avoid_reasons, details, ingredients)
+                             VALUES (@DrugName, @Manufacturer, @Purpose, @Usage, @Dosage, @SideEffects, @Storage, @AvoidReasons, @Details, @Ingredients)";
 
         await connection.ExecuteAsync(sql, drug);
     }

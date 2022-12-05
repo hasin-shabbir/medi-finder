@@ -1,27 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "/Users/asali/Documents/GitHub/medi-finder/MediFind.Backend/MediFind.Backend.csproj": {}
+    "C:\\Users\\hasin\\Desktop\\medi-finder\\MediFind.Backend\\MediFind.Backend.csproj": {}
   },
   "projects": {
-    "/Users/asali/Documents/GitHub/medi-finder/MediFind.Backend/MediFind.Backend.csproj": {
+    "C:\\Users\\hasin\\Desktop\\medi-finder\\MediFind.Backend\\MediFind.Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/asali/Documents/GitHub/medi-finder/MediFind.Backend/MediFind.Backend.csproj",
+        "projectUniqueName": "C:\\Users\\hasin\\Desktop\\medi-finder\\MediFind.Backend\\MediFind.Backend.csproj",
         "projectName": "MediFind.Backend",
-        "projectPath": "/Users/asali/Documents/GitHub/medi-finder/MediFind.Backend/MediFind.Backend.csproj",
-        "packagesPath": "/Users/asali/.nuget/packages/",
-        "outputPath": "/Users/asali/Documents/GitHub/medi-finder/MediFind.Backend/obj/",
+        "projectPath": "C:\\Users\\hasin\\Desktop\\medi-finder\\MediFind.Backend\\MediFind.Backend.csproj",
+        "packagesPath": "C:\\Users\\hasin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hasin\\Desktop\\medi-finder\\MediFind.Backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/asali/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\hasin\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {}
-        },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
@@ -82,7 +79,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.403/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -2,6 +2,10 @@
 import styles from '../../styles/Home.module.css';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Header from "../layouts/Header";
+import React, { Fragment } from "react";
+import Breadcrumbs from '../layouts/Breadcrumbs';
+const pagelocation = "Add Medicine";
 
 const AddDrug = () => {
     const [drugName, setDrugName] = useState('')
@@ -21,10 +25,11 @@ const AddDrug = () => {
 
 
   return (
-    <div className = {styles.container}>
-        <Link to="/home" className={styles.links}><h5>Go back</h5></Link>
-        <h2> Add Medicine</h2>
-        <form action ="sendmail.php" method= "POST">
+    <Fragment>
+    <Header/>
+    <Breadcrumbs breadcrumb={{ pagename: pagelocation }} />
+        <div className = {styles.container}>
+         <form action ="sendmail.php" method= "POST">
             <div style = {{display: 'inline-block'}}>
                 <label >Drug Name</label>
                 <input 
@@ -197,10 +202,10 @@ const AddDrug = () => {
                     value ='Save'
                     name = 'submit'
                 />
-            </div>
-            
-        </form>
-    </div>
+                </div> 
+            </form>
+        </div>
+    </Fragment>
   )
 }
 

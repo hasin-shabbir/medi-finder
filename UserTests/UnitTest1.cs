@@ -40,17 +40,17 @@ public class UnitTest1
         var repo_manager = new RepositoryManager(curr_context);
         
         var newController = new MediFind.Backend.Features.Drug.DrugController(mock_mediator.Object,repo_manager);
-        var response = newController.GetDrugById(5);
+        var response = newController.GetDrugById(13);
         response.Wait();
     
-        Assert.Equal(5,response.Result.DrugId);
+        Assert.Equal(13,response.Result.DrugId);
     }
 
     //search by name, ingredient, and/or manufacturer
     [Theory]
-    [InlineData("drug1",null,null)]
-    [InlineData(null,"paracetamol",null)]
-    [InlineData(null,null,"manufacturer1")]
+    [InlineData("str",null,null)]
+    [InlineData(null,"str",null)]
+    [InlineData(null,null,"str")]
     public void SearchDrugTest(string? name,string? ingredients, string? manufacturer){
 
         var config = new ConfigurationBuilder().AddInMemoryCollection(this.myconfig).Build();
@@ -97,5 +97,15 @@ public class UnitTest1
         Assert.True(ing_pass);
         Assert.True(manufacturer_pass);
     }
+
+    //TODO:
+    //1. case-sensitivity check
+    //2. createDrug test
+    //3. mini-tests
+    //4. validation, integration, unit tests
+    //5. github integrations and build tests
+    //6. all tests from presentation
+    //7. presentation and documentation
+    //8. print reason for test fail
 
 }

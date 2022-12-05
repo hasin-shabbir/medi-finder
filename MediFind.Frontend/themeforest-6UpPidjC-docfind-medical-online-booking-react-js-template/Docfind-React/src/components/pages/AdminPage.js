@@ -2,11 +2,12 @@ import React, { Component, Fragment } from 'react';
 import MetaTags from "react-meta-tags";
 import Header from '../layouts/Header';
 import Breadcrumbs from '../layouts/Breadcrumbs';
-import Content from '../sections/saved-list/Content';
+import Content2 from '../sections/user-page/Content';
+import Content1 from  '../sections/admin-page/Content';
 
-const pagelocation = "Saved Drugs";
+const pagelocation = "Admin Page";
 
-class SavedList extends Component {
+class QRCode extends Component {
     render() {
         return (
             <Fragment>
@@ -19,10 +20,16 @@ class SavedList extends Component {
                 </MetaTags>
                 <Header />
                 <Breadcrumbs breadcrumb={{ pagename: pagelocation }} />
-                <Content />
+                <Content1
+                    detailId={this.props.match.params.id}
+                />
+                <Content2
+                    detailId={this.props.match.params.id}
+                />
+                
             </Fragment>
         );
     }
 }
 
-export default SavedList;
+export default QRCode;

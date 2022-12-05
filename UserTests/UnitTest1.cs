@@ -23,8 +23,9 @@ public class UnitTest1
         Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
     }
 
+    //search by QR code test
     [Fact]
-    public void drugByIdTest()
+    public void SearchDrugByIdTest()
     {
         var myconfig = new Dictionary<string, string> {
             {"ConnectionStrings:Database","Host=medifind-db.cwi0wezznrhn.me-central-1.rds.amazonaws.com:5432;Username=postgres;Password=Medifind123;Database=postgres"}
@@ -39,5 +40,56 @@ public class UnitTest1
         response.Wait();
     
         Assert.Equal(5,response.Result.DrugId);
+    }
+
+    //search by name, ingredient, and/or manufacturer
+    [Theory]
+    [InlineData("drug1",null,null)]
+    [InlineData(null,"paracetamol",null)]
+    [InlineData(null,null,"manufacturer1")]
+    public void SearchDrugTest(string? name,string? ingredients, string? manufacturer){
+        var myconfig = new Dictionary<string, string> {
+            {"ConnectionStrings:Database","Host=medifind-db.cwi0wezznrhn.me-central-1.rds.amazonaws.com:5432;Username=postgres;Password=Medifind123;Database=postgres"}
+        };
+        var config = new ConfigurationBuilder().AddInMemoryCollection(myconfig).Build();
+        var curr_context = new DbContext(config);
+        var mock_mediator = new Mock<IMediator>();
+        var repo_manager = new RepositoryManager(curr_context);
+        
+        var newController = new MediFind.Backend.Features.Drug.DrugController(mock_mediator.Object,repo_manager);
+        var response = newController.SearchDrugs(name,ingredients,manufacturer);
+        response.Wait();
+        
+        bool test_pass = true;
+        var res_list = response.Result.ToList();
+
+        if (test_pass && name!=null){
+            foreach (var res in res_list){
+                if (res.DrugName==null || !(res.DrugName.Contains(name))){
+                    test_pass = false;
+                    break;
+                }
+            }
+        }
+
+        if (test_pass && ingredients!=null){
+            foreach (var res in res_list){
+                if (res.Ingredients==null || !(res.Ingredients.Contains(ingredients))){
+                    test_pass = false;
+                    break;
+                }
+            }
+        }
+
+        if (test_pass && manufacturer!=null){
+            foreach (var res in res_list){
+                if (res.Manufacturer==null || !(res.Manufacturer.Contains(manufacturer))){
+                    test_pass = false;
+                    break;
+                }
+            }
+        }
+
+        Assert.True(test_pass);
     }
 }

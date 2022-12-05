@@ -1,9 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import MetaTags from "react-meta-tags";
 import Headertwo from '../layouts/Headertwo';
+import Header from '../layouts/Header';
 import Content from '../sections/home/Content';
 
 const pagelocation = "Homepage";
+const isAdmin = false;
+const isUser = true;
 
 class Home extends Component {
     render() {
@@ -16,7 +19,7 @@ class Home extends Component {
                         content="#"
                     />
                 </MetaTags>
-                <Headertwo />
+                {(isAdmin || isUser) ? <Header/> : <Headertwo/>}
                 <Content />
             </Fragment>
         );

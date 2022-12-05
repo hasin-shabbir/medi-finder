@@ -3,7 +3,7 @@ import Navhelper from "../../helper/NavHelper";
 import Mobilemenu from "./Mobilemenu";
 import { Link } from "react-router-dom";
 import navigation from "../../data/navigation.json";
-
+const isAdmin = false;
 class Header extends Navhelper {
   constructor(props) {
     super(props);
@@ -11,6 +11,7 @@ class Header extends Navhelper {
       filter: "name",
       inputText: " ",
     };
+    
     this.onFilterChange = this.onFilterChange.bind(this);
     this.onInputTextChange = this.onInputTextChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -189,8 +190,8 @@ class Header extends Navhelper {
                                     alt="BookmarkIcon"
                                   />
                                 </a>
-                  
-                                <a href="/user-page">
+                                {(isAdmin) ? 
+                                <a href= "./admin-page">
                                   <img
                                     src={
                                       process.env.PUBLIC_URL +
@@ -198,7 +199,17 @@ class Header extends Navhelper {
                                     }
                                     alt="BookmarkIcon"
                                   />
-                                </a>
+                                </a> :
+                                <a href= "./user-page">
+                                <img
+                                  src={
+                                    process.env.PUBLIC_URL +
+                                    "/assets/img/user.svg"
+                                  }
+                                  alt="BookmarkIcon"
+                                />
+                              </a> }
+
                 </div>
               </div>
             </div>

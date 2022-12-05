@@ -67,15 +67,16 @@ class Headertwo extends Navhelper {
                                             <div>
                                                 <form onSubmit={this.handleSubmit}>
                                                     <div className="row no-gutters">
-                                                        <div className="col-lg-6">
+                                                        <div className="col-lg-5">
                                                             <div className="form-group pad4">
                                                                 <select value={this.state.filter} onChange={this.onFilterChange}>
+                                                                    <option value="name">by Drug Name</option> 
                                                                     <option value="manufacturer">by Manufacturer</option>
-                                                                    <option value="name">by Drug Name</option>
+                                                                    <option value="ingredients">by Ingredients</option>
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div className="col-lg-6">
+                                                        <div className="col-lg-7">
                                                             <div className="form-group">
                                                                 <div className="input-group">
                                                                     <input type="text" className="location-field" placeholder="Search Here" value={this.state.inputText} onChange={this.onInputTextChange} required />

@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router
 const Home = React.lazy(() => import("./components/pages/Home"));
 const Cliniclist = React.lazy(() => import("./components/pages/Cliniclist"));
 const Clinicdetails = React.lazy(() => import("./components/pages/Clinicdetails"));
+const SearchResults = React.lazy(() => import("./components/pages/SearchResults"));
 const Login = React.lazy(() => import("./components/pages/Login"));
 const SignUp = React.lazy(() => import("./components/pages/SignUp"));
 const AddDrug = React.lazy(() => import("./components/pages/AddDrug"));
@@ -32,6 +33,7 @@ function App() {
             {/* Home */}
             <Route exact path="/" component={Home} />
             <Route exact path="/clinic-list" component={Cliniclist} />
+            <Route exact path="/search-results" component={SearchResults} />
             <Route exact path="/clinic-details/:id" component={props => (<Clinicdetails {...props} key={window.location.pathname} />)} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/sign-up" component={SignUp} />

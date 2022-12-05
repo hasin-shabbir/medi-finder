@@ -9,7 +9,7 @@ class Headertwo extends Navhelper {
     super(props);
     this.state = {
       filter: "name",
-      inputText: " ",
+      inputText: "",
     };
     this.onFilterChange = this.onFilterChange.bind(this);
     this.onInputTextChange = this.onInputTextChange.bind(this);
@@ -106,8 +106,14 @@ class Headertwo extends Navhelper {
                                 required
                               />
                               <div className="input-group-append pr-5">
-                                <button type="submit">
-                                  {" "}
+                                <a
+                                  href={
+                                    "/search-results?filter=" +
+                                    this.state.filter +
+                                    "&text=" +
+                                    this.state.inputText
+                                  }
+                                >
                                   <img
                                     src={
                                       process.env.PUBLIC_URL +
@@ -115,7 +121,7 @@ class Headertwo extends Navhelper {
                                     }
                                     alt="searchIcon"
                                   />
-                                </button>
+                                </a>
                               </div>
                             </div>
                           </div>

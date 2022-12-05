@@ -1,17 +1,16 @@
-import React, { Component, Fragment, useEffect } from "react";
+import React, { Component, Fragment, useEffect, useState } from "react";
 import MetaTags from "react-meta-tags";
 import Header from "../layouts/Headertwo";
 import Breadcrumbs from "../layouts/Breadcrumbs";
 import Content from "../sections/search-results/Content";
 import { useLocation } from "react-router-dom";
-// import { useSearchParams } from "react-router-dom";
 
 const pagelocation = "Search Results";
 
 const SearchResults = () => {
-  //   const [searchParams, setSearchParams] = useSearchParams();
   const search = useLocation().search;
   const searchParams = new URLSearchParams(search);
+  const [drugsList, setDrugsList] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,11 +28,9 @@ const SearchResults = () => {
         },
       };
       try {
-        console.log(url);
         const response = await fetch(url, options);
-        console.log(response);
         const body = await response.json();
-        console.log(body);
+        setDrugsList(body);
       } catch (error) {
         throw error;
       }
@@ -53,7 +50,7 @@ const SearchResults = () => {
       </MetaTags>
       <Header />
       <Breadcrumbs breadcrumb={{ pagename: pagelocation }} />
-      <Content />
+      <Content drugs={drugsList} />
     </Fragment>
   );
 };

@@ -7,12 +7,14 @@ import Content from "../sections/search-results/Content";
 import { useLocation } from "react-router-dom";
 
 const pagelocation = "Search Results";
-const isAdmin = false;
-const isUser = true;
+
 const SearchResults = () => {
   const search = useLocation().search;
   const searchParams = new URLSearchParams(search);
   const [drugsList, setDrugsList] = useState([]);
+
+  const isUser = localStorage.getItem("sessionId") != null;
+  const isAdmin = localStorage.getItem("isAdmin");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,7 +52,7 @@ const SearchResults = () => {
         </title>
         <meta name="description" content="#" />
       </MetaTags>
-      {(isAdmin || isUser) ? <Header/> : <Headertwo/>}
+      {isAdmin || isUser ? <Header /> : <Headertwo />}
       <Breadcrumbs breadcrumb={{ pagename: pagelocation }} />
       <Content drugs={drugsList} />
     </Fragment>

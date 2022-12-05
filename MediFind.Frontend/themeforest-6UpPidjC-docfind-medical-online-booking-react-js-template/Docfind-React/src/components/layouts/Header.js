@@ -3,7 +3,7 @@ import Navhelper from "../../helper/NavHelper";
 import Mobilemenu from "./Mobilemenu";
 import { Link } from "react-router-dom";
 import navigation from "../../data/navigation.json";
-const isAdmin = false;
+
 class Header extends Navhelper {
   constructor(props) {
     super(props);
@@ -11,7 +11,7 @@ class Header extends Navhelper {
       filter: "name",
       inputText: " ",
     };
-    
+
     this.onFilterChange = this.onFilterChange.bind(this);
     this.onInputTextChange = this.onInputTextChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,6 +38,9 @@ class Header extends Navhelper {
   }
 
   render() {
+    const isAdmin = localStorage.getItem("isAdmin") == "true";
+    console.log(isAdmin);
+
     return (
       <Fragment>
         {/* Mobile Menu */}
@@ -180,36 +183,28 @@ class Header extends Navhelper {
                     ))}
                     {/* Data */}
                   </ul>
-                  
-                                <a href="/saved-list">
-                                  <img
-                                    src={
-                                      process.env.PUBLIC_URL +
-                                      "/assets/img/bookmark.svg"
-                                    }
-                                    alt="BookmarkIcon"
-                                  />
-                                </a>
-                                {(isAdmin) ? 
-                                <a href= "./admin-page">
-                                  <img
-                                    src={
-                                      process.env.PUBLIC_URL +
-                                      "/assets/img/user.svg"
-                                    }
-                                    alt="BookmarkIcon"
-                                  />
-                                </a> :
-                                <a href= "./user-page">
-                                <img
-                                  src={
-                                    process.env.PUBLIC_URL +
-                                    "/assets/img/user.svg"
-                                  }
-                                  alt="BookmarkIcon"
-                                />
-                              </a> }
 
+                  <a href="/saved-list">
+                    <img
+                      src={process.env.PUBLIC_URL + "/assets/img/bookmark.svg"}
+                      alt="BookmarkIcon"
+                    />
+                  </a>
+                  {isAdmin ? (
+                    <a href="./admin-page">
+                      <img
+                        src={process.env.PUBLIC_URL + "/assets/img/user.svg"}
+                        alt="BookmarkIcon"
+                      />
+                    </a>
+                  ) : (
+                    <a href="./user-page">
+                      <img
+                        src={process.env.PUBLIC_URL + "/assets/img/user.svg"}
+                        alt="BookmarkIcon"
+                      />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

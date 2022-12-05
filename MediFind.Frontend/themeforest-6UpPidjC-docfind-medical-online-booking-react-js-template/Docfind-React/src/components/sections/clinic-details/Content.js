@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { getClinic } from '../../../helper/clinicHelper';
-import { getAuthor, Rating } from '../../../helper/helper';
+import { getDrug } from '../../../helper/drugHelper';
 
 class Content extends Component {
     render() {
         const detailId = this.props.detailId;
-        const item = getClinic(detailId);
+        const drug = getDrug(detailId);
         return (
             <div className="section sigma_post-details">
                 <div className="container">
@@ -18,33 +17,26 @@ class Content extends Component {
                                         <div className="row no-gutters">
                                             <div className="col-md-4">
                                                 <div className="sigma_team-thumb">
-                                                    <img src={process.env.PUBLIC_URL + "/" + item.image} alt={item.name} />
+                                                    <img src={process.env.PUBLIC_URL + "/" + drug.image} alt={drug.drugName} />
                                                 </div>
                                             </div>
                                             <div className="col-md-8">
                                                 <div className="sigma_team-body">
                                                     <h5>
-                                                        <Link to={"/clinic-details/" + item.id}>{item.name}</Link>
+                                                        <Link to={"/clinic-details/" + drug.drugId}>{drug.drugName}</Link>
                                                     </h5>
-                                                    <div className="sigma_rating">
-                                                        {Rating(item.rating)}
-                                                        <span className="ml-3">({item.reviews.length})</span>
-                                                    </div>
-                                                    <div className="sigma_team-categories">
-                                                        <Link to={"/clinic-details/" + item.id} className="sigma_team-category">{item.specialist}</Link>
-                                                    </div>
                                                     <div className="sigma_team-info mt-4">
                                                         <span>
-                                                            <i className="fal fa-phone" />
-                                                            {item.phone}
+                                                            <i className="fal fa-stethoscope" />
+                                                            {drug.purpose}
                                                         </span>
                                                         <span>
-                                                            <i className="fal fa-at" />
-                                                            {item.email}
+                                                            <i className="fal fa-pills" />
+                                                            {drug.ingredients}
                                                         </span>
                                                         <span>
                                                             <i className="fal fa-building" />
-                                                            {item.location}
+                                                            {drug.manufacturer}
                                                         </span>
                                                     </div>
                                                 </div>
@@ -60,101 +52,61 @@ class Content extends Component {
                                             </div>
                                             <div className="col-md-4">
                                                 <div className="menu nav-item">
-                                                    <Link to="#" className="nav-link p-0" onClick={() => document.getElementById('contact').scrollIntoView({behavior: 'smooth'})}>Location &amp; Contact</Link>
+                                                    <Link to="#" className="nav-link p-0" onClick={() => document.getElementById('cautions').scrollIntoView({behavior: 'smooth'})}>Cautions</Link>
                                                 </div>
                                             </div>
                                             <div className="col-md-4">
                                                 <div className="menu nav-item border-0">
-                                                    <Link to="#" className="nav-link p-0" onClick={() => document.getElementById('reviews').scrollIntoView({behavior: 'smooth'})}>Review</Link>
+                                                    <Link to="#" className="nav-link p-0" onClick={() => document.getElementById('howTo').scrollIntoView({behavior: 'smooth'})}>How To Use</Link>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div id="overview">
-                                        <h4>Overview Of {item.name}</h4>
-                                        <div dangerouslySetInnerHTML={{ __html: item.htmltext }} />
-                                    </div>
-                                    <div className="spacer">
-                                    </div>
-                                    <div id="contact">
-                                        <h4>{item.name} Location &amp; Contact Information</h4>
-                                        <div className="sigma_contact-wrapper">
-                                            <div className="sigma_contact-map">
-                                                <iframe title={item.name} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9914406081493!2d2.292292615201654!3d48.85837360866272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee380ef7e0!2sEiffel%20Tower!5e0!3m2!1sen!2sin!4v1571115084828!5m2!1sen!2sin" height={600} allowFullScreen>
-                                                </iframe>
-                                            </div>
-                                            <div className="sigma_contact-blocks">
-                                                <h5>Hospital Address</h5>
-                                                <div className="row">
-                                                    <div className="col-md-4">
-                                                        <div className="sigma_contact-block style-3">
-                                                            <i className="fal fa-map-marker-alt icon" />
-                                                            <div className="contact-block-inner">
-                                                                <p>{item.location}</p>
-                                                                <p className="mb-0">{item.location}</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-md-4">
-                                                        <div className="sigma_contact-block style-3 mt-3 mt-md-0">
-                                                            <i className="fal fa-phone icon" />
-                                                            <div className="contact-block-inner">
-                                                                <p>{item.phone}</p>
-                                                                <p className="mb-0">{item.phone}</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-md-4">
-                                                        <div className="sigma_contact-block style-3 mt-3 mt-md-0">
-                                                            <i className="fal fa-globe icon" />
-                                                            <div className="contact-block-inner">
-                                                                <p>{item.email}</p>
-                                                                <p className="mb-0">{item.email}</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <h3>Overview Of {drug.drugName}</h3>
+                                        <div>
+                                            <p>
+                                                {drug.purpose}
+                                            </p>
+                                            <br></br>
+                                            <p>
+                                                {drug.details}
+                                            </p>
                                         </div>
+                                        
                                     </div>
                                     <div className="spacer">
                                     </div>
-                                    <div id="reviews">
-                                        <h4>Patient Experience</h4>
-                                        {/* Data */}
-                                        {item.reviews.map((review, i) => (
-                                            <div className="sigma_testimonial style-14" key={i}>
-                                                {getAuthor(review.user).map((user, i) => (
-                                                    <div className="sigma_testimonial-thumb" key={i}>
-                                                        <img src={process.env.PUBLIC_URL + "/" + user.image} alt={user.name} />
-                                                    </div>
-                                                ))}
-                                                {getAuthor(review.user).map((user, i) => (
-                                                    <div className="sigma_testimonial-body" key={i}>
-                                                        <div className="d-flex align-items-center justify-content-between">
-                                                            <div className="d-block d-sm-flex align-items-center">
-                                                                <div className="sigma_author-block">
-                                                                    <h5>
-                                                                        {user.name}
-                                                                    </h5>
-                                                                </div>
-                                                                <div className="sigma_rating ml-sm-4 ml-0 mt-2 mt-sm-0">
-                                                                    {Rating(review.rating)}
-                                                                    <span className="ml-3">({review.rating}/5)</span>
-                                                                </div>
-                                                            </div>
-                                                            <span className="sigma_testimonial-date">{review.commentdate}</span>
-                                                        </div>
-                                                        <p>"{review.comment}"</p>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        ))}
-                                        {/* Data */}
-                                        <button type="button" className="sigma_btn">
+                                    <div id="cautions">
+                                        <h3>Cautions</h3>
+                                        <h4>Avoid Using {drug.drugName}</h4>
+                                        <p>
+                                            {drug.avoidReasons}
+                                        </p>
+                                        <h4>Side-Effects of {drug.drugName}</h4>
+                                        <p>
+                                            {drug.sideEffects}
+                                        </p>
+                                    </div>
+                                    <div className="spacer">
+                                    </div>
+                                    <div id="howTo">
+                                        <h3>How to Use</h3>
+                                        <p>
+                                            {drug.usage}
+                                        </p>
+                                        {/* <button type="button" className="sigma_btn">
                                             See More
                                             <i className="fal fa-arrow-right" />
-                                        </button>
+                                        </button> */}
+                                    </div>
+                                    <br></br>
+                                    <div id="additionalInfo">
+                                    <h3>Additional Information</h3>
+                                        <h4>How to Store</h4>
+                                        <p>
+                                            {drug.storage}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -162,9 +114,21 @@ class Content extends Component {
                         {/* Sidebar Start */}
                         <div className="col-lg-4">
                             <div className="sidebar style-10 mt-5 mt-lg-0">
+                                {/* Request For QR Code */}
+                                <div className="widget">
+                                    <h5 className="widget-title">Get QR Code</h5>
+                                    <div className="widget-inner">
+                                        <Link to={"/clinic-details/" + drug.drugId}>
+                                            <button type="button" className="sigma_btn btn-block btn-sm">
+                                                QR Code for {drug.drugName}
+                                                <i className="fal fa-arrow-right ml-3" />
+                                            </button>
+                                        </Link>
+                                    </div>
+                                </div>
                                 {/* form Widget 2 */}
                                 <div className="widget">
-                                    <h5 className="widget-title">Get in Touch</h5>
+                                    <h5 className="widget-title">Request for Update</h5>
                                     <div className="widget-inner">
                                         <form>
                                             <div className="form-group">
@@ -187,28 +151,17 @@ class Content extends Component {
                                 </div>
                                 {/* Contact Widget */}
                                 <div className="widget">
-                                    <h5 className="widget-title">Contact</h5>
+                                    <h5 className="widget-title">Manufacturer Details</h5>
                                     <div className="widget-inner">
                                         <div className="sigma_info style-24 p-0 shadow-none">
                                             <div className="sigma_info-title">
                                                 <span className="sigma_info-icon bg-primary-1 text-white">
-                                                    <i className="fal fa-phone" />
+                                                    <i className="fal fa-building" />
                                                 </span>
                                             </div>
                                             <div className="sigma_info-description">
-                                                <h5>Our Phone</h5>
-                                                <p>Phone No.: {item.phone}</p>
-                                            </div>
-                                        </div>
-                                        <div className="sigma_info style-24 p-0 shadow-none">
-                                            <div className="sigma_info-title">
-                                                <span className="sigma_info-icon bg-primary-1 text-white">
-                                                    <i className="fal fa-envelope-open-text" />
-                                                </span>
-                                            </div>
-                                            <div className="sigma_info-description">
-                                                <h5>Our Email</h5>
-                                                <p>Inquiries: {item.email}</p>
+                                                <h5>Manufacturer</h5>
+                                                <p>{drug.manufacturer}</p>
                                             </div>
                                         </div>
                                         <div className="sigma_info style-24 p-0 shadow-none mb-0">
@@ -218,8 +171,8 @@ class Content extends Component {
                                                 </span>
                                             </div>
                                             <div className="sigma_info-description">
-                                                <h5>Our Address</h5>
-                                                <p>{item.location}</p>
+                                                <h5>Address</h5>
+                                                <p>{drug.manufacturerAddress}</p>
                                             </div>
                                         </div>
                                     </div>

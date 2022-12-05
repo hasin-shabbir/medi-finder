@@ -67,7 +67,7 @@ class Headertwo extends Navhelper {
                                             <div>
                                                 <form onSubmit={this.handleSubmit}>
                                                     <div className="row no-gutters">
-                                                        <div className="col-lg-5">
+                                                        <div className="col">
                                                             <div className="form-group pad4">
                                                                 <select value={this.state.filter} onChange={this.onFilterChange}>
                                                                     <option value="name">by Drug Name</option> 
@@ -76,11 +76,11 @@ class Headertwo extends Navhelper {
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div className="col-lg-7">
+                                                        <div className="col-lg-7‘">
                                                             <div className="form-group">
                                                                 <div className="input-group">
                                                                     <input type="text" className="location-field" placeholder="Search Here" value={this.state.inputText} onChange={this.onInputTextChange} required />
-                                                                    <div className="input-group-append pr-3">
+                                                                    <div className="input-group-append pr-5">
                                                                         <button type="submit"> <img src={ process.env.PUBLIC_URL + "/assets/img/SearchIcon.svg"} alt="searchIcon" /></button>
                                                                     </div>
                                                                 </div>

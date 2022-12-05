@@ -190,7 +190,7 @@ class Header extends Navhelper {
                                   />
                                 </a>
                   
-                                <a href="/">
+                                <a href="/user-page">
                                   <img
                                     src={
                                       process.env.PUBLIC_URL +

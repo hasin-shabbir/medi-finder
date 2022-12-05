@@ -35,7 +35,7 @@ class Content extends Component {
                     <div className="col-md-5 col-sm-6">
                         <div className="sigma_team-body">
                             <h5>
-                                <Link to={"/clinic-details/" + item.drugId}>{item.drugName}</Link>
+                                <Link to={"/drug-details/" + item.drugId}>{item.drugName}</Link>
                             </h5>
                             {/* <div className="sigma_team-categories">
                                 <Link to={"/clinic-details/" + item.drugId} className="sigma_team-category">{item.specialist}</Link>

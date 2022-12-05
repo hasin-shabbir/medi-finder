@@ -35,14 +35,14 @@ class Content extends Component {
                     <div className="col-md-5 col-sm-6">
                         <div className="sigma_team-body">
                             <h5>
-                                <Link to={"/clinic-details/" + item.drugId}>{item.drugName}</Link>
+                                <Link to={"/drug-details/" + item.drugId}>{item.drugName}</Link>
                             </h5>
                             {/* <div className="sigma_team-categories">
                                 <Link to={"/clinic-details/" + item.drugId} className="sigma_team-category">{item.specialist}</Link>
                             </div> */}
                             <p>{item.purpose}</p>
                             <div className="d-flex align-items-center mt-4">
-                                <Link to={"/clinic-details/" + item.drugId} className="sigma_btn">View More</Link>
+                                <Link to={"/drug-details/" + item.drugId} className="sigma_btn">View More</Link>
                                 <div className="sigma_team-controls ml-3">
                                     <Link to="#" className={this.state.favorite === item ? 'active' : ''} onClick={(e) => this.favoriteTrigger(item)}>
                                         <i className="fal fa-heart" />

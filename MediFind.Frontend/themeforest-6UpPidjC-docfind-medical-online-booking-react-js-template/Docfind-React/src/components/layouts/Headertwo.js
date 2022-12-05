@@ -106,6 +106,7 @@ class Headertwo extends Navhelper {
                                 required
                               />
                               <div className="input-group-append pr-5">
+                              <button type="submit">
                                 <a
                                   href={
                                     "/search-results?filter=" +
@@ -122,6 +123,7 @@ class Headertwo extends Navhelper {
                                     alt="searchIcon"
                                   />
                                 </a>
+                                </button>
                               </div>
                             </div>
                           </div>

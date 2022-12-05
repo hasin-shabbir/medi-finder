@@ -3,11 +3,11 @@ import MetaTags from "react-meta-tags";
 import Header from '../layouts/Headertwo';
 import Breadcrumbs from '../layouts/Breadcrumbs';
 import Footer from '../layouts/Footer';
-import Content from '../sections/error-page/Content';
+import Content from '../sections/clinic-grid/Content';
 
-const pagelocation = "Error 404";
+const pagelocation = "Clinic Grid";
 
-class Errorpage extends Component {
+class Clinicgrid extends Component {
     render() {
         return (
             <Fragment>
@@ -20,11 +20,13 @@ class Errorpage extends Component {
                 </MetaTags>
                 <Header />
                 <Breadcrumbs breadcrumb={{ pagename: pagelocation }} />
-                <Content />
+                <Content
+                    catId={this.props.match.params.catId}
+                />
                 <Footer />
             </Fragment>
         );
     }
 }
 
-export default Errorpage;
+export default Clinicgrid;

@@ -2,9 +2,10 @@ import React, { Component, Fragment } from 'react';
 import MetaTags from "react-meta-tags";
 import Header from '../layouts/Headertwo';
 import Breadcrumbs from '../layouts/Breadcrumbs';
+import Footer from '../layouts/Footer';
 import Content from '../sections/clinic-details/Content';
 
-const pagelocation = "Drug Details";
+const pagelocation = "Clinic Details";
 
 class Clinicdetails extends Component {
     render() {
@@ -22,6 +23,7 @@ class Clinicdetails extends Component {
                 <Content
                     detailId={this.props.match.params.id}
                 />
+                <Footer />
             </Fragment>
         );
     }

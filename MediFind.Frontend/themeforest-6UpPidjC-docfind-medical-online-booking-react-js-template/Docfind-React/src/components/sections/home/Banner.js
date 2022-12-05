@@ -29,7 +29,7 @@ class Banner extends Component {
                     {/* Data */}
                     {banner.map((item, i) => (
                         <div key={i}>
-                            <div className="banner-slider-inner bg-center bg-cover" style={{ backgroundImage: "url(" + process.env.PUBLIC_URL + "/" + item.image + ")" }}>
+                            <div className="banner-slider-inner bg-center bg-cover secondary-overlay" style={{ backgroundImage: "url(" + process.env.PUBLIC_URL + "/" + item.image + ")" }}>
                                 <div className="sigma_banner-text text-center">
                                     <div className="container">
                                         <div className="row justify-content-center">

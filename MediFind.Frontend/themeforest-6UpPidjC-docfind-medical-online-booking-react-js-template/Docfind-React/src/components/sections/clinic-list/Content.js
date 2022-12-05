@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import drug from '../../../data/clinic/drug.json';
+import clinicpost from '../../../data/clinic/clinic.json';
+import { Rating } from '../../../helper/helper';
 import Pagination from "react-js-pagination";
 
 class Content extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: drug,
+            data: clinicpost,
             activePage: 1,
             itemPerpage: 10,
             favorite: false
@@ -35,14 +36,14 @@ class Content extends Component {
                     <div className="col-md-5 col-sm-6">
                         <div className="sigma_team-body">
                             <h5>
-                                <Link to={"/clinic-details/" + item.drugId}>{item.drugName}</Link>
+                                <Link to={"/clinic-details/" + item.id}>{item.name}</Link>
                             </h5>
-                            {/* <div className="sigma_team-categories">
-                                <Link to={"/clinic-details/" + item.drugId} className="sigma_team-category">{item.specialist}</Link>
-                            </div> */}
-                            <p>{item.purpose}</p>
+                            <div className="sigma_team-categories">
+                                <Link to={"/clinic-details/" + item.id} className="sigma_team-category">{item.specialist}</Link>
+                            </div>
+                            <p>{item.qualification}</p>
                             <div className="d-flex align-items-center mt-4">
-                                <Link to={"/clinic-details/" + item.drugId} className="sigma_btn">View More</Link>
+                                <Link to={"/clinic-details/" + item.id} className="sigma_btn">View More</Link>
                                 <div className="sigma_team-controls ml-3">
                                     <Link to="#" className={this.state.favorite === item ? 'active' : ''} onClick={(e) => this.favoriteTrigger(item)}>
                                         <i className="fal fa-heart" />
@@ -55,13 +56,23 @@ class Content extends Component {
                         <div className="sigma_team-footer">
                             <div className="sigma_team-info">
                                 <span>
-                                    <i className="fal fa-building" />
-                                    {item.manufacturer}
+                                    <i className="fal fa-map-marker-alt" />
+                                    {item.location}
                                 </span>
                                 <span>
-                                    <i className="fal fa-pills" />
-                                    {item.ingredients}
+                                    <i className="fal fa-award" />
+                                    {item.experience} Yrs Experience
                                 </span>
+                                <span>
+                                    <i className="fal fa-calendar" />
+                                    {item.available.map((data, i) => (
+                                        <b key={i}>{data}, </b>
+                                    ))}
+                                </span>
+                            </div>
+                            <div className="sigma_rating">
+                                {Rating(item.rating)}
+                                <span className="ml-3">({item.reviews.length})</span>
                             </div>
                         </div>
                     </div>
@@ -74,7 +85,7 @@ class Content extends Component {
                     <div className="container">
                         <div className="row">
                             
-                            <div className="col-lg-11">
+                            <div className="col-lg-8">
                                 {/* Data */}
                                 {paginationData}
                                 {/* Data */}

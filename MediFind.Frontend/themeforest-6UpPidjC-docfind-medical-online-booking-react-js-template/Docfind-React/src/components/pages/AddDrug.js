@@ -7,7 +7,7 @@ const pagelocation = "Add Medicine";
 
 const AddDrug = () => {
   const [drugName, setDrugName] = useState("");
-  const [description, setDescription] = useState("");
+  const [dosage, setDosage] = useState("");
   const [caution, setCaution] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [usage, setUsage] = useState("");
@@ -21,12 +21,46 @@ const AddDrug = () => {
   const [avoidReasons, setAvoidReasons] = useState("");
   const [purpose, setPurpose] = useState("");
 
+  const sessionId = localStorage.getItem("sessionId");
+
+  const onSubmitForm = async () => {
+    const url =
+      "http://ec2-3-28-239-202.me-central-1.compute.amazonaws.com/api/drugs";
+    const options = {
+      method: "POST",
+      headers: {
+        Authorization: sessionId,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        drugName: "string",
+        manufacturer: "string",
+        purpose: "string",
+        usage: "string",
+        dosage: "string",
+        sideEffects: "string",
+        storage: "string",
+        avoidReasons: "string",
+        details: "string",
+        ingredients: "string",
+      }),
+    };
+    try {
+      console.log(options);
+      const response = await fetch(url, options);
+    } catch (error) {
+      throw error;
+    }
+  };
+
   return (
     <Fragment>
       <Header />
       <Breadcrumbs breadcrumb={{ pagename: pagelocation }} />
       <div className={styles.container}>
-        <form action="process.php" method="POST">
+        <form>
           <div style={{ display: "inline-block" }}>
             <label>Drug Name</label>
             <input
@@ -41,18 +75,6 @@ const AddDrug = () => {
           </div>
           <br></br>
           <div style={{ display: "inline-block" }}>
-            <label>Description</label>
-            <textarea
-              style={{ fontFamily: "Heebo" }}
-              className={styles.addDrugInfoLarge}
-              name="Description"
-              required
-              placeholder="Drug Description (Purpose)"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </div>
-          <div style={{ display: "inline-block", paddingLeft: "100px" }}>
             <label>Purpose</label>
             <textarea
               style={{ fontFamily: "Heebo" }}
@@ -62,6 +84,18 @@ const AddDrug = () => {
               placeholder="Drug Purpose"
               value={purpose}
               onChange={(e) => setPurpose(e.target.value)}
+            />
+          </div>
+          <div style={{ display: "inline-block", paddingLeft: "100px" }}>
+            <label>Dosage</label>
+            <textarea
+              style={{ fontFamily: "Heebo" }}
+              className={styles.addDrugInfoLarge}
+              name="Dosage"
+              required
+              placeholder="Drug Dosage"
+              value={dosage}
+              onChange={(e) => setDosage(e.target.value)}
             />
           </div>
           <div style={{ display: "inline-block" }}>
@@ -183,7 +217,6 @@ const AddDrug = () => {
               styles={{ borderColor: "white" }}
               type="file"
               name="addImage"
-              required
               placeholder="Industries"
               value={image}
               onChange={(e) => setImage(e.target.value)}
@@ -204,9 +237,10 @@ const AddDrug = () => {
           >
             <input
               className={styles.btn}
-              type="submit"
+              type="button"
               value="Save"
               name="submit"
+              onClick={onSubmitForm}
             />
           </div>
         </form>

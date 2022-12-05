@@ -95,12 +95,12 @@ class Content extends Component {
                                         <p>
                                             {drug.usage}
                                         </p>
-                                        {/* <button type="button" className="sigma_btn">
+
+                                        <button type="button" className="sigma_btn">
                                             See More
                                             <i className="fal fa-arrow-right" />
-                                        </button> */}
+                                        </button>
                                     </div>
-                                    <br></br>
                                     <div id="additionalInfo">
                                     <h3>Additional Information</h3>
                                         <h4>How to Store</h4>
@@ -118,11 +118,11 @@ class Content extends Component {
                                 <div className="widget">
                                     <h5 className="widget-title">Get QR Code</h5>
                                     <div className="widget-inner">
-                                        <Link to={"/QR-code" + drug.drugId}>
-                                            <button type="button" className="sigma_btn btn-block btn-sm">
-                                                QR Code for {drug.drugName}
-                                                <i className="fal fa-arrow-right ml-3" />
-                                            </button>
+                                        <Link to={"/QR-code/" + drug.drugId}>
+                                                <button type="button" className="sigma_btn btn-block btn-sm">
+                                                    QR Code for {drug.drugName}
+                                                    <i className="fal fa-arrow-right ml-3" />
+                                                </button>
                                         </Link>
                                     </div>
                                 </div>

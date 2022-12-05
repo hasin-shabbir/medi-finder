@@ -1,4 +1,4 @@
-import drug from '../data/clinic/drug.json';
+import drug from '../data/drug/drug.json';
 
 // Drug details
 function getDrug(drugId) {

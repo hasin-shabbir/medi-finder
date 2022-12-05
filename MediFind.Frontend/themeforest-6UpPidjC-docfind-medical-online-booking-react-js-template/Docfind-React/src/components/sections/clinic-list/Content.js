@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import drug from '../../../data/clinic/drug.json';
+import drug from '../../../data/drug/drug.json';
 import Pagination from "react-js-pagination";
 
 class Content extends Component {
@@ -42,7 +42,7 @@ class Content extends Component {
                             </div> */}
                             <p>{item.purpose}</p>
                             <div className="d-flex align-items-center mt-4">
-                                <Link to={"/clinic-details/" + item.drugId} className="sigma_btn">View More</Link>
+                                <Link to={"/drug-details/" + item.drugId} className="sigma_btn">View More</Link>
                                 <div className="sigma_team-controls ml-3">
                                     <Link to="#" className={this.state.favorite === item ? 'active' : ''} onClick={(e) => this.favoriteTrigger(item)}>
                                         <i className="fal fa-heart" />

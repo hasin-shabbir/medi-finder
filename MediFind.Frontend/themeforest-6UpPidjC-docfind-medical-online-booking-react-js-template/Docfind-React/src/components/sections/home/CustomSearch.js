@@ -44,8 +44,9 @@ class CustomSearch extends Component {
                                     <div className="form-group">
                                         <label>Search Topic</label>
                                         <select value={this.state.filter} onChange={this.onFilterChange}>
-                                            <option value="manufacturer">by Manufacturer</option>
                                             <option value="name">by Drug Name</option>
+                                            <option value="manufacturer">by Manufacturer</option>
+                                            <option value="ingredients">by Ingredients</option>
                                         </select>
                                     </div>
                                 </div>

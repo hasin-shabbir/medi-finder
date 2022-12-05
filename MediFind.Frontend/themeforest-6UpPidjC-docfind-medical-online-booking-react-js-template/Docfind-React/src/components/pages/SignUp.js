@@ -1,6 +1,7 @@
 import styles from '../../styles/Home.module.css';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Headertwo from '../layouts/Headertwo';
 
 const SignUp = () => {
     const [firstname, setFirstname] = useState('')
@@ -46,6 +47,7 @@ const SignUp = () => {
 
   return (
     <div className={styles.form}>
+            <Headertwo/>
         <h1> Create Your MediFind Account</h1>
         <form className = {styles.myform} action ="process.php" method= "POST" onSubmit={handleSubmit}>
             <div className = {styles.formGroup}>

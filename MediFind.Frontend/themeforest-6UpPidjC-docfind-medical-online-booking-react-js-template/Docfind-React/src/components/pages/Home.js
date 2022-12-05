@@ -19,7 +19,6 @@ class Home extends Component {
                 </MetaTags>
                 <Headertwo />
                 <Content />
-                <Footer />
             </Fragment>
         );
     }

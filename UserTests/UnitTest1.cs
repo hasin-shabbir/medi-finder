@@ -17,9 +17,13 @@ namespace UserTests;
 public class UnitTest1
 {   
     private ITestOutputHelper output;
-
+    private Dictionary<string,string> myconfig;
+    
     public UnitTest1(ITestOutputHelper output){
         this.output = output;
+        this.myconfig = new Dictionary<string, string> {
+            {"ConnectionStrings:Database","Host=medifind-db.cwi0wezznrhn.me-central-1.rds.amazonaws.com:5432;Username=postgres;Password=Medifind123;Database=postgres"}
+        };
         Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
     }
 
@@ -27,10 +31,7 @@ public class UnitTest1
     [Fact]
     public void SearchDrugByIdTest()
     {
-        var myconfig = new Dictionary<string, string> {
-            {"ConnectionStrings:Database","Host=medifind-db.cwi0wezznrhn.me-central-1.rds.amazonaws.com:5432;Username=postgres;Password=Medifind123;Database=postgres"}
-        };
-        var config = new ConfigurationBuilder().AddInMemoryCollection(myconfig).Build();
+        var config = new ConfigurationBuilder().AddInMemoryCollection(this.myconfig).Build();
         var curr_context = new DbContext(config);
         var mock_mediator = new Mock<IMediator>();
         var repo_manager = new RepositoryManager(curr_context);
@@ -48,10 +49,8 @@ public class UnitTest1
     [InlineData(null,"paracetamol",null)]
     [InlineData(null,null,"manufacturer1")]
     public void SearchDrugTest(string? name,string? ingredients, string? manufacturer){
-        var myconfig = new Dictionary<string, string> {
-            {"ConnectionStrings:Database","Host=medifind-db.cwi0wezznrhn.me-central-1.rds.amazonaws.com:5432;Username=postgres;Password=Medifind123;Database=postgres"}
-        };
-        var config = new ConfigurationBuilder().AddInMemoryCollection(myconfig).Build();
+
+        var config = new ConfigurationBuilder().AddInMemoryCollection(this.myconfig).Build();
         var curr_context = new DbContext(config);
         var mock_mediator = new Mock<IMediator>();
         var repo_manager = new RepositoryManager(curr_context);

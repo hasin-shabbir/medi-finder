@@ -8,10 +8,17 @@ const AddDrug = () => {
     const [description, setDescription] = useState('')
     const [caution, setCaution] = useState('')
     const [ingredients, setIngredients] = useState('')
-    const [dosage, setDosage] = useState('')
+    const [usage, setUsage] = useState('')
     const [storage, setStorage] = useState('')
-    const [addImage, setAddImage] = useState('')
+    const [image, setImage] = useState('')
     const [addVideo, setAddVideo] = useState('')
+    const [manufacturer, setManufacturer] = useState('')
+    const [manufacturerAddress, setManufacturerAddress] = useState('')
+    const [details, setDetails] = useState('')
+    const [sideEffects, setSideEffects] = useState('')
+    const [avoidReasons, setAvoidReasons] = useState('')
+    const [purpose, setPurpose] = useState('')
+
 
   return (
     <div className = {styles.container}>
@@ -43,14 +50,36 @@ const AddDrug = () => {
                 />
             </div>
             <div style = {{display: 'inline-block', paddingLeft:'100px'}}>
-                <label>Caution</label>
+                <label>Purpose</label>
                 <textarea style ={{fontFamily: 'Heebo'}} 
                     className = {styles.addDrugInfoLarge}
-                    name= 'Caution' 
+                    name= 'Purpose' 
                     required
-                    placeholder="Drug Caution" 
-                    value ={caution}
-                    onChange={(e)=> setCaution(e.target.value)} 
+                    placeholder="Drug Purpose" 
+                    value ={purpose}
+                    onChange={(e)=> setPurpose(e.target.value)} 
+                />
+            </div>
+            <div style = {{display: 'inline-block'}}>
+                <label>Manufacturer</label>
+                <textarea style ={{fontFamily: 'Heebo'}} 
+                    className = {styles.addDrugInfoLarge}
+                    name= 'Manufacturer' 
+                    required
+                    placeholder="Manufacturer" 
+                    value ={manufacturer}
+                    onChange={(e)=> setManufacturer(e.target.value)} 
+                />
+            </div>
+            <div style = {{display: 'inline-block', paddingLeft:'100px'}}>
+                <label>Manufacturer Address</label>
+                <textarea style ={{fontFamily: 'Heebo'}} 
+                    className = {styles.addDrugInfoLarge}
+                    name= 'manufacturerAddress' 
+                    required
+                    placeholder="Manufacturer Address" 
+                    value ={manufacturerAddress}
+                    onChange={(e)=> setManufacturerAddress(e.target.value)} 
                 />
             </div>
             <br></br>
@@ -66,16 +95,28 @@ const AddDrug = () => {
                     onChange={(e)=> setIngredients(e.target.value)} 
                 />
             </div>
+            <div style={{paddingRight: '30%'}}>
+                <label >Details</label>
+                <input 
+                    className = {styles.addDrugInfoSmall}
+                    type = 'text'
+                    name= 'Details' 
+                    required
+                    placeholder="Drug Details" 
+                    value ={details}
+                    onChange={(e)=> setDetails(e.target.value)} 
+                />
+            </div>
             <div style = {{display: 'inline-block' }}>
-                <label>Dosage</label>
+                <label>Usage</label>
                 <textarea style ={{fontFamily: 'Heebo'}} 
                     className = {styles.addDrugInfoLarge}
                     type = 'text'
-                    name= 'Dosage' 
+                    name= 'Usage' 
                     required
-                    placeholder="Drug Dosage" 
-                    value ={dosage}
-                    onChange={(e)=> setDosage(e.target.value)} 
+                    placeholder="Drug Usage" 
+                    value ={usage}
+                    onChange={(e)=> setUsage(e.target.value)} 
                 />
             </div>
             <div style = {{display: 'inline-block', paddingLeft:'100px'}}>
@@ -86,8 +127,45 @@ const AddDrug = () => {
                     name= 'Storage' 
                     required
                     placeholder="Storage" 
-                    value ={Storage}
+                    value ={storage}
                     onChange={(e)=> setStorage(e.target.value)} 
+                />
+            </div>
+            <br></br>
+            <div style = {{display: 'inline-block' }}>
+             <label >Side Effects</label>
+                <textarea 
+                    className = {styles.addDrugInfoLarge}
+                    type = 'text'
+                    name= 'Side Effcts' 
+                    required
+                    placeholder="SideEffects" 
+                    value ={sideEffects}
+                    onChange={(e)=> setSideEffects(e.target.value)} 
+                />
+            </div>
+            <div style = {{display: 'inline-block', paddingLeft:'100px'}}>
+                <label>Avoid Reasons</label>
+                <textarea style ={{fontFamily: 'Heebo'}} 
+                    className = {styles.addDrugInfoLarge}
+                    type = 'text'
+                    name= 'avoidReasons' 
+                    required
+                    placeholder="Avoid Reasons" 
+                    value ={avoidReasons}
+                    onChange={(e)=> setAvoidReasons(e.target.value)} 
+                />
+            </div>
+            <div style={{paddingRight: '30%'}}>
+                <label >Caution</label>
+                <input 
+                    className = {styles.addDrugInfoSmall}
+                    type = 'text'
+                    name= 'Caution' 
+                    required
+                    placeholder="Caution" 
+                    value ={caution}
+                    onChange={(e)=> setCaution(e.target.value)} 
                 />
             </div>
             <div styles={{borderColor: 'white'}}>
@@ -98,8 +176,8 @@ const AddDrug = () => {
                     name= 'addImage' 
                     required
                     placeholder="Industries" 
-                    value ={addImage}
-                    onChange={(e)=> setAddImage(e.target.value)} 
+                    value ={image}
+                    onChange={(e)=> setImage(e.target.value)} 
                 />
             </div>
             <div>

@@ -118,7 +118,7 @@ class Content extends Component {
                                 <div className="widget">
                                     <h5 className="widget-title">Get QR Code</h5>
                                     <div className="widget-inner">
-                                        <Link to={"/clinic-details/" + drug.drugId}>
+                                        <Link to={"/QR-code" + drug.drugId}>
                                             <button type="button" className="sigma_btn btn-block btn-sm">
                                                 QR Code for {drug.drugName}
                                                 <i className="fal fa-arrow-right ml-3" />

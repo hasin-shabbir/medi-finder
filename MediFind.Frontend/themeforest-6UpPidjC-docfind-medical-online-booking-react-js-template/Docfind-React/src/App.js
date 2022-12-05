@@ -8,6 +8,8 @@ const Clinicdetails = React.lazy(() => import("./components/pages/Clinicdetails"
 const Login = React.lazy(() => import("./components/pages/Login"));
 const SignUp = React.lazy(() => import("./components/pages/SignUp"));
 const AddDrug = React.lazy(() => import("./components/pages/AddDrug"));
+const QRcode = React.lazy(() => import("./components/pages/QRcode"));
+
 // Extra
 const Errorpage = React.lazy(() => import("./components/pages/Errorpage"));
 
@@ -34,6 +36,7 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/add-drug" component={AddDrug} />
+            <Route exact path="/QR-code" component={QRcode} />
             {/* Extra */}
             <Route exact path="/error-page" component={Errorpage} />
             <Route exact component={Errorpage} />

@@ -7,6 +7,7 @@ using Moq;
 using MediatR;
 using MediFind.Backend;
 using Dapper;
+using Microsoft.AspNetCore.Http;
 // using static MediFind.Backend.RepositoryManager;
 
 using static MediFind.Backend.Features.Drug.DrugController;
@@ -60,36 +61,41 @@ public class UnitTest1
         var response = newController.SearchDrugs(name,ingredients,manufacturer);
         response.Wait();
         
-        bool test_pass = true;
+        bool name_pass = true;
+        bool ing_pass = true;
+        bool manufacturer_pass = true;
         var res_list = response.Result.ToList();
 
-        if (test_pass && name!=null){
+        if (name!=null){
             foreach (var res in res_list){
                 if (res.DrugName==null || !(res.DrugName.Contains(name))){
-                    test_pass = false;
+                    name_pass = false;
                     break;
                 }
             }
         }
 
-        if (test_pass && ingredients!=null){
+        if (name_pass && ingredients!=null){
             foreach (var res in res_list){
                 if (res.Ingredients==null || !(res.Ingredients.Contains(ingredients))){
-                    test_pass = false;
+                    ing_pass = false;
                     break;
                 }
             }
         }
 
-        if (test_pass && manufacturer!=null){
+        if (name_pass && ing_pass && manufacturer!=null){
             foreach (var res in res_list){
                 if (res.Manufacturer==null || !(res.Manufacturer.Contains(manufacturer))){
-                    test_pass = false;
+                    manufacturer_pass = false;
                     break;
                 }
             }
         }
 
-        Assert.True(test_pass);
+        Assert.True(name_pass);
+        Assert.True(ing_pass);
+        Assert.True(manufacturer_pass);
     }
+
 }

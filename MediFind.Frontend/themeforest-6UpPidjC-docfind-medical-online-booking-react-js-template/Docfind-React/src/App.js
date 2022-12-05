@@ -40,7 +40,7 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/add-drug" component={AddDrug} />
-            <Route exact path="/QR-code" component={QRcode} />
+            <Route exact path="/QR-code/:id" component={QRcode} />
             {/* Extra */}
             <Route exact path="/error-page" component={Errorpage} />
             <Route exact component={Errorpage} />

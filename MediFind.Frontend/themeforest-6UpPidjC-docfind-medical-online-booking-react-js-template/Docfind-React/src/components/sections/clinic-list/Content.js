@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import drug from '../../../data/clinic/drug.json';
+import drug from '../../../data/drug/drug.json';
 import Pagination from "react-js-pagination";
 
 class Content extends Component {

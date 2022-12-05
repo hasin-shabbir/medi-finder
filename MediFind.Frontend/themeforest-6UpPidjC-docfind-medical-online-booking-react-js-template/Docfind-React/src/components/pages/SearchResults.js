@@ -34,6 +34,7 @@ const SearchResults = () => {
       try {
         const response = await fetch(url, options);
         const body = await response.json();
+        console.log(body);
         setDrugsList(body);
       } catch (error) {
         throw error;

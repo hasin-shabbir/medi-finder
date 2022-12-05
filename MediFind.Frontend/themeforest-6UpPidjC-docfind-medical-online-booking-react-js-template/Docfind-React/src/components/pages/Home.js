@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import MetaTags from "react-meta-tags";
 import Headertwo from '../layouts/Headertwo';
-import Footer from '../layouts/Footer';
 import Content from '../sections/home/Content';
 
 const pagelocation = "Homepage";

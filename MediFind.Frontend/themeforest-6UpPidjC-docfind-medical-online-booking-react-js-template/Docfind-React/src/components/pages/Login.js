@@ -1,8 +1,7 @@
 import styles from '../../styles/Home.module.css';
 import { useState } from 'react'
 import { Link } from 'react-router-dom';
-import React, { Fragment, Component } from 'react';
-import Headertwo from '../layouts/Headertwo';
+import React, { Fragment } from 'react';
 
 
 const Login = () => {
@@ -10,7 +9,6 @@ const Login = () => {
     const [password, setPassword] = useState('')
   return (
     <Fragment>
-        <Headertwo/>
     <div className={styles.form}>
         <h1> Log In to MediFind</h1>
         <form className = {styles.myform} action ="process.php" method= "POST">

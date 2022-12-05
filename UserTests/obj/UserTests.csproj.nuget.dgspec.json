@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\hasin\\Desktop\\medi-finder\\UserTests\\UserTests.csproj": {}
+    "C:\\Users\\hasin\\Desktop\\medi-finder\\UserTests\\UserTests.csproj": {}
   },
   "projects": {
-    "c:\\Users\\hasin\\Desktop\\medi-finder\\Medifind.Backend\\MediFind.Backend.csproj": {
+    "C:\\Users\\hasin\\Desktop\\medi-finder\\Medifind.Backend\\MediFind.Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\hasin\\Desktop\\medi-finder\\Medifind.Backend\\MediFind.Backend.csproj",
+        "projectUniqueName": "C:\\Users\\hasin\\Desktop\\medi-finder\\Medifind.Backend\\MediFind.Backend.csproj",
         "projectName": "MediFind.Backend",
-        "projectPath": "c:\\Users\\hasin\\Desktop\\medi-finder\\Medifind.Backend\\MediFind.Backend.csproj",
+        "projectPath": "C:\\Users\\hasin\\Desktop\\medi-finder\\Medifind.Backend\\MediFind.Backend.csproj",
         "packagesPath": "C:\\Users\\hasin\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\hasin\\Desktop\\medi-finder\\Medifind.Backend\\obj\\",
+        "outputPath": "C:\\Users\\hasin\\Desktop\\medi-finder\\Medifind.Backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hasin\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -83,14 +83,14 @@
         }
       }
     },
-    "c:\\Users\\hasin\\Desktop\\medi-finder\\UserTests\\UserTests.csproj": {
+    "C:\\Users\\hasin\\Desktop\\medi-finder\\UserTests\\UserTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\hasin\\Desktop\\medi-finder\\UserTests\\UserTests.csproj",
+        "projectUniqueName": "C:\\Users\\hasin\\Desktop\\medi-finder\\UserTests\\UserTests.csproj",
         "projectName": "UserTests",
-        "projectPath": "c:\\Users\\hasin\\Desktop\\medi-finder\\UserTests\\UserTests.csproj",
+        "projectPath": "C:\\Users\\hasin\\Desktop\\medi-finder\\UserTests\\UserTests.csproj",
         "packagesPath": "C:\\Users\\hasin\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\hasin\\Desktop\\medi-finder\\UserTests\\obj\\",
+        "outputPath": "C:\\Users\\hasin\\Desktop\\medi-finder\\UserTests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hasin\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -102,8 +102,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "c:\\Users\\hasin\\Desktop\\medi-finder\\Medifind.Backend\\MediFind.Backend.csproj": {
-                "projectPath": "c:\\Users\\hasin\\Desktop\\medi-finder\\Medifind.Backend\\MediFind.Backend.csproj"
+              "C:\\Users\\hasin\\Desktop\\medi-finder\\Medifind.Backend\\MediFind.Backend.csproj": {
+                "projectPath": "C:\\Users\\hasin\\Desktop\\medi-finder\\Medifind.Backend\\MediFind.Backend.csproj"
               }
             }
           }

@@ -3,12 +3,17 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import React, { Fragment } from "react";
 import Headertwo from "../layouts/Headertwo";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const history = useHistory();
 
   const submitLoginForm = async () => {
+    setError("");
     const url =
       "http://ec2-3-28-239-202.me-central-1.compute.amazonaws.com/api/users/sign-in";
     const options = {
@@ -32,6 +37,9 @@ const Login = () => {
       if (response.ok) {
         localStorage.setItem("sessionId", body.sessionId);
         localStorage.setItem("isAdmin", body.isAdmin);
+        history.push("/");
+      } else {
+        setError(body.message);
       }
     } catch (error) {
       throw error;
@@ -64,6 +72,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+          <p style={{ color: "red" }}>{error != "" && error}</p>
           <div className={styles.formGroup}>
             <button type="button" onClick={submitLoginForm}>
               Log in

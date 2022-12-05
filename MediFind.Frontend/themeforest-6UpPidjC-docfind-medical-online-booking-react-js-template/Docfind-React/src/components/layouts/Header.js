@@ -71,7 +71,7 @@ class Header extends Navhelper {
                                             </Link>
                                         </li>
                                         <li className="d-none d-sm-block">
-                                            <Link to="/sign-up" className="sigma_btn btn-sm">
+                                            <Link to="/login" className="sigma_btn btn-sm">
                                                 Log In
                                                 <i className="fal fa-arrow-right" />
                                             </Link>

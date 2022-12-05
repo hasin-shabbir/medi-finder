@@ -27,6 +27,9 @@ const Clinicdetails = React.lazy(() => import("./components/pages/Clinicdetails"
 // Contact
 // const Contact = React.lazy(() => import("./components/pages/Contact"));
 // Extra
+const Login = React.lazy(() => import("./components/pages/Login"));
+const SignUp = React.lazy(() => import("./components/pages/SignUp"));
+
 const Errorpage = React.lazy(() => import("./components/pages/Errorpage"));
 
 // Scroll to Top
@@ -78,6 +81,8 @@ function App() {
             {/* Contact */}
             {/* <Route exact path="/contact" component={Contact} /> */}
             {/* Extra */}
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/error-page" component={Errorpage} />
             <Route exact component={Errorpage} />
           </Switch>

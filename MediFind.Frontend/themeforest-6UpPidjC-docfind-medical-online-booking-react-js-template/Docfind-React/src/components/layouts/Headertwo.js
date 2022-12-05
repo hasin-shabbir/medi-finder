@@ -106,26 +106,7 @@ class Headertwo extends Navhelper {
                                 required
                               />
                               <div className="input-group-append pr-5">
-<<<<<<< Updated upstream
-                              <button type="submit">
-                                <a
-                                  href={
-                                    "/search-results?filter=" +
-                                    this.state.filter +
-                                    "&text=" +
-                                    this.state.inputText
-                                  }
-                                >
-                                  <img
-                                    src={
-                                      process.env.PUBLIC_URL +
-                                      "/assets/img/SearchIcon.svg"
-                                    }
-                                    alt="searchIcon"
-                                  />
-                                </a>
-=======
-                                <button>
+                                <button type="submit">
                                   <a
                                     href={
                                       "/search-results?filter=" +
@@ -142,7 +123,6 @@ class Headertwo extends Navhelper {
                                       alt="searchIcon"
                                     />
                                   </a>
->>>>>>> Stashed changes
                                 </button>
                               </div>
                             </div>

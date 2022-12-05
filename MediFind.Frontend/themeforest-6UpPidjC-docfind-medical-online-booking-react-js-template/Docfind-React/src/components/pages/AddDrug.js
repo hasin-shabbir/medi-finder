@@ -28,7 +28,7 @@ const AddDrug = () => {
     <Header/>
     <Breadcrumbs breadcrumb={{ pagename: pagelocation }} />
         <div className = {styles.container}>
-         <form action ="sendmail.php" method= "POST">
+         <form action ="process.php" method= "POST">
             <div style = {{display: 'inline-block'}}>
                 <label >Drug Name</label>
                 <input 

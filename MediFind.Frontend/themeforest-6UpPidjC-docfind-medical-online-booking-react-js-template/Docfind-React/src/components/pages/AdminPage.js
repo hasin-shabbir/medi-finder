@@ -23,7 +23,7 @@ class QRCode extends Component {
                 <Content1
                     detailId={this.props.match.params.id}
                 />
-                <Content2
+                <Content2 style ={{marginBottom: '30px'}}
                     detailId={this.props.match.params.id}
                 />
                 

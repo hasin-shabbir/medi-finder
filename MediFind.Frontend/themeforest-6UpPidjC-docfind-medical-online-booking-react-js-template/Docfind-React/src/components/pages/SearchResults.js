@@ -1,12 +1,14 @@
 import React, { Component, Fragment, useEffect, useState } from "react";
 import MetaTags from "react-meta-tags";
-import Header from "../layouts/Headertwo";
+import Header from "../layouts/Header";
+import Headertwo from "../layouts/Headertwo";
 import Breadcrumbs from "../layouts/Breadcrumbs";
 import Content from "../sections/search-results/Content";
 import { useLocation } from "react-router-dom";
 
 const pagelocation = "Search Results";
-
+const isAdmin = false;
+const isUser = true;
 const SearchResults = () => {
   const search = useLocation().search;
   const searchParams = new URLSearchParams(search);
@@ -48,7 +50,7 @@ const SearchResults = () => {
         </title>
         <meta name="description" content="#" />
       </MetaTags>
-      <Header />
+      {(isAdmin || isUser) ? <Header/> : <Headertwo/>}
       <Breadcrumbs breadcrumb={{ pagename: pagelocation }} />
       <Content drugs={drugsList} />
     </Fragment>

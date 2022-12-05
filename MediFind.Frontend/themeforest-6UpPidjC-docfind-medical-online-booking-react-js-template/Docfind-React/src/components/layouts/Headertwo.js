@@ -133,59 +133,7 @@ class Headertwo extends Navhelper {
                   </div>
                   {/* SearchBar */}
                   <ul className="navbar-nav mr-3">
-                    {/* Data */}
-                    {navigation.map((item, i) => (
-                      <li
-                        key={i}
-                        className={
-                          item.child === true
-                            ? "menu-item menu-item-has-children"
-                            : "menu-item"
-                        }
-                      >
-                        {item.child === true ? (
-                          <Link to="#">{item.linkText}</Link>
-                        ) : (
-                          <Link to={item.link}>{item.linkText}</Link>
-                        )}
-                        {item.child === true ? (
-                          <ul className="sub-menu">
-                            {item.submenu.map((item, i) => (
-                              <li
-                                key={i}
-                                className={
-                                  item.child === true
-                                    ? "menu-item menu-item-has-children"
-                                    : "menu-item"
-                                }
-                              >
-                                {item.child === true ? (
-                                  <Link to="#">{item.linkText}</Link>
-                                ) : (
-                                  <Link to={item.link}>{item.linkText}</Link>
-                                )}
-                                {item.child === true ? (
-                                  <ul className="sub-menu">
-                                    {item.submenu.map((item, i) => (
-                                      <li className="menu-item" key={i}>
-                                        <Link to={item.link}>
-                                          {item.linkText}
-                                        </Link>
-                                      </li>
-                                    ))}
-                                  </ul>
-                                ) : (
-                                  ""
-                                )}
-                              </li>
-                            ))}
-                          </ul>
-                        ) : (
-                          ""
-                        )}
-                      </li>
-                    ))}
-                    {/* Data */}
+                    
                   </ul>
                   <div className="sigma_header-controls style-2">
                     <ul className="sigma_header-controls-inner">

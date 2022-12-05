@@ -7,6 +7,7 @@ const Cliniclist = React.lazy(() => import("./components/pages/Cliniclist"));
 const Clinicdetails = React.lazy(() => import("./components/pages/Clinicdetails"));
 const Login = React.lazy(() => import("./components/pages/Login"));
 const SignUp = React.lazy(() => import("./components/pages/SignUp"));
+const AddDrug = React.lazy(() => import("./components/pages/AddDrug"));
 // Extra
 const Errorpage = React.lazy(() => import("./components/pages/Errorpage"));
 
@@ -32,6 +33,7 @@ function App() {
             <Route exact path="/clinic-details/:id" component={props => (<Clinicdetails {...props} key={window.location.pathname} />)} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/sign-up" component={SignUp} />
+            <Route exact path="/add-drug" component={AddDrug} />
             {/* Extra */}
             <Route exact path="/error-page" component={Errorpage} />
             <Route exact component={Errorpage} />

@@ -1,9 +1,17 @@
+*{
+    margin: 0;
+    padding:0;
+}
 .container{
     color: black;
-      font-family: "Heebo", sans-serif;
-      font-size: 16px;
-      width: 90%;
-      margin: auto;
+    font-family: "Heebo", sans-serif;
+    font-size: 16px;
+    width: 90%;
+    margin: auto;
+    padding-top: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
   .btn{
     margin-left: 20px;
@@ -13,9 +21,10 @@
     font-family: "Heebo", sans-serif;
     color: white;
     padding: 5px 15px;
+    margin-top: 10px;
   }
   .btn:hover{
-    background-color: #8AAAE5;
+    background-color: #287BB8;
     border-color: #999999;
   }
   .container label{
@@ -23,23 +32,26 @@
     padding-bottom: 5px;
   }
   .container div{
-    padding-bottom: 10px;
     margin-bottom: 10px;
   }
-  .container input, .container textarea{
+  .container input[type = "text"], .container textarea{
     border-radius: 5px;
+    font-family: "Heebo", sans-serif;
     border: 1px rgb(0, 0, 0) solid;
+    padding: 10px;
   }
-  .addDrugInfoSmall{
-    width: 300px;
+  .container input[type = "file"]{
     padding: 5px;
   }
+  .addDrugInfoSmall{
+    width: 50px;
+  }
   .addDrugInfoLarge{
-    width: 500px;
+    width: 400px;
   }
 
   .form {
-      overflow: hidden;
+    overflow: hidden;
     align-items: center;
     box-sizing: border-box;
     box-shadow: 0px 4px 4px 3px rgb(180, 179, 179);
@@ -122,9 +134,3 @@
     color:#8AAAE5;
   }
 
-  @media (max-width: 300px) {
-    .form {
-      width: 100%;
-      flex-direction: column;
-    }
-  }

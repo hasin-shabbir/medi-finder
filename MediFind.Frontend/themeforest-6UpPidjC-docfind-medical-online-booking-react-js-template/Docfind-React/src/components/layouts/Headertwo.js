@@ -128,12 +128,12 @@ class Headertwo extends Navhelper {
                                         <ul className="sigma_header-controls-inner">
                                             
                                             <li className="d-none d-sm-block">
-                                                <Link to="/login" className="sigma_btn btn-sm">
+                                                <Link to="/doctor-grid" className="sigma_btn btn-sm">
                                                     Login
                                                 </Link>
                                             </li>
                                             <li className="d-none d-sm-block">
-                                                <Link to="/sign-up" className="sigma_btn btn-sm">
+                                                <Link to="/doctor-grid" className="sigma_btn btn-sm">
                                                     Sign Up
                                                 </Link>
                                             </li>

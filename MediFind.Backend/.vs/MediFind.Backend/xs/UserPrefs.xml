@@ -1,5 +1,9 @@
 ﻿<Properties StartupConfiguration="{6E039622-17BA-4DBC-B808-A45C247E2601}|Default">
+  <MonoDevelop.Ide.ItemProperties.MediFind.Backend PreferredExecutionTarget="/Applications/Firefox.app" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
       <File FileName="Features/User/UserRepository.cs" />
@@ -9,11 +13,11 @@
       <File FileName="Features/User/UserController.cs" />
       <File FileName="DbContext.cs" />
       <File FileName="Features/Drug/DrugRepository.cs" />
-      <File FileName="Features/Drug/DrugController.cs" Line="63" Column="1" />
+      <File FileName="Features/Drug/DrugController.cs" />
       <File FileName="Features/Drug/CreateDrug.cs" />
-      <File FileName="Features/Common/Middleware/AuthenticationMiddleware.cs" Line="21" Column="29" />
-      <File FileName=".gitignore" Line="242" Column="3" />
-      <File FileName="Program.cs" Line="31" Column="4" />
+      <File FileName="Features/Common/Middleware/AuthenticationMiddleware.cs" />
+      <File FileName=".gitignore" />
+      <File FileName="Program.cs" Line="52" Column="20" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -35,10 +39,6 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.MediFind.Backend PreferredExecutionTarget="/Applications/Firefox.app" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

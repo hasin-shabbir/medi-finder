@@ -18,6 +18,7 @@ public class UnitTest1
 {   
     private ITestOutputHelper output;
     private Dictionary<string,string> myconfig;
+    private Mock<IMediator> mock_mediator;
     
     public UnitTest1(ITestOutputHelper output){
         this.output = output;
@@ -25,6 +26,8 @@ public class UnitTest1
             {"ConnectionStrings:Database","Host=medifind-db.cwi0wezznrhn.me-central-1.rds.amazonaws.com:5432;Username=postgres;Password=Medifind123;Database=postgres"}
         };
         Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
+        this.mock_mediator = new Mock<IMediator>();
+
     }
 
     //search by QR code test
@@ -33,7 +36,6 @@ public class UnitTest1
     {
         var config = new ConfigurationBuilder().AddInMemoryCollection(this.myconfig).Build();
         var curr_context = new DbContext(config);
-        var mock_mediator = new Mock<IMediator>();
         var repo_manager = new RepositoryManager(curr_context);
         
         var newController = new MediFind.Backend.Features.Drug.DrugController(mock_mediator.Object,repo_manager);
@@ -52,7 +54,6 @@ public class UnitTest1
 
         var config = new ConfigurationBuilder().AddInMemoryCollection(this.myconfig).Build();
         var curr_context = new DbContext(config);
-        var mock_mediator = new Mock<IMediator>();
         var repo_manager = new RepositoryManager(curr_context);
         
         var newController = new MediFind.Backend.Features.Drug.DrugController(mock_mediator.Object,repo_manager);

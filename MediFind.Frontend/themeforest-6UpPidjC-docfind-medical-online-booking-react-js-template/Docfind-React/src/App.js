@@ -27,7 +27,7 @@ const ScrollToTop = withRouter(({ children, location: { pathname } }) => {
 
 function App() {
   return (
-    <Router basename={"/docfind/"}>
+    <Router basename={"/medifind/"}>
       <Suspense fallback={<div></div>}>
         <ScrollToTop>
           <Switch>
@@ -36,7 +36,7 @@ function App() {
             <Route exact path="/clinic-list" component={Cliniclist} />
             <Route exact path="/search-results" component={SearchResults} />
             <Route exact path="/saved-list" component={SavedList} />
-            <Route exact path="/clinic-details/:id" component={props => (<Clinicdetails {...props} key={window.location.pathname} />)} />
+            <Route exact path="/drug-details/:id" component={props => (<Clinicdetails {...props} key={window.location.pathname} />)} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/add-drug" component={AddDrug} />

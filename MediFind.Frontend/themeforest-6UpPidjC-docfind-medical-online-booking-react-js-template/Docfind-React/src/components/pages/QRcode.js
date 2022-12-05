@@ -1,22 +1,30 @@
-import styles from '../../styles/Home.module.css';
-import { useState } from 'react';
+import React, { Component, Fragment } from 'react';
+import MetaTags from "react-meta-tags";
+import Header from '../layouts/Headertwo';
+import Breadcrumbs from '../layouts/Breadcrumbs';
+import Content from '../sections/qrcode/Content';
 
-import React, { Component } from 'react';
-import { getDrug } from '../../helper/drugHelper';
+const pagelocation = "QR Code";
 
-class QRcode extends Component {
+class QRCode extends Component {
     render() {
-        const detailId = this.props.detailId;
-        const drug = getDrug(detailId);
         return (
-            <div>
-                <h4>{drug.drugName}</h4>
-                
-
-            </div>
-
-
-    );
+            <Fragment>
+                <MetaTags>
+                    <title>Docfind - Doctors Appointment Booking - React Template | {pagelocation}</title>
+                    <meta
+                        name="description"
+                        content="#"
+                    />
+                </MetaTags>
+                <Header />
+                <Breadcrumbs breadcrumb={{ pagename: pagelocation }} />
+                <Content
+                    detailId={this.props.match.params.id}
+                />
+            </Fragment>
+        );
     }
-}  
-export default QRcode;
+}
+
+export default QRCode;

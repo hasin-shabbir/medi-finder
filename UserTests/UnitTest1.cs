@@ -100,6 +100,8 @@ public class UnitTest1
 
     [Theory]
     [InlineData("h0FsK78HXYCMTUSOKMDB1g")]
+    [InlineData("q3p+BwCNBq0kVgZLU+oMZw")]
+    [InlineData("ZGV0078ibQmYU5XWQWlpsg")]
     public void createDrugTest_adminFail(String authheader){
         var config = new ConfigurationBuilder().AddInMemoryCollection(this.myconfig).Build();
         var curr_context = new DbContext(config);
@@ -125,6 +127,37 @@ public class UnitTest1
         Task<CreateDrug.CreateDrugResponse> response;
         Assert.ThrowsAsync<BadHttpRequestException>(()=>response = newController.CreateDrug(cmnd));
     }
+
+    [Theory]
+    [InlineData("h82")]
+    [InlineData(null)]
+    public void createDrugTest_authFail(String authheader){
+        var config = new ConfigurationBuilder().AddInMemoryCollection(this.myconfig).Build();
+        var curr_context = new DbContext(config);
+        var repo_manager = new RepositoryManager(curr_context);
+        var newController = new MediFind.Backend.Features.Drug.DrugController(mock_mediator.Object,repo_manager);
+        
+        newController.ControllerContext = new Microsoft.AspNetCore.Mvc.ControllerContext();
+        newController.ControllerContext.HttpContext = new DefaultHttpContext();
+        newController.ControllerContext.HttpContext.Request.Headers["Authorization"] = authheader;
+        newController.ControllerContext.HttpContext.Items["UserId"] = null;
+
+
+        var cmnd = new CreateDrug.CreateDrugCommand();
+        cmnd.DrugName = "newDrug1";
+        cmnd.Manufacturer = "newMan1";
+        cmnd.Purpose = "testing";
+        cmnd.Usage = "do not use";
+        cmnd.Dosage = "only during test";
+        cmnd.SideEffects = "unknown";
+        cmnd.Storage = "on github";
+        cmnd.AvoidReasons = "if not test env";
+        cmnd.Details = "lorem ipsum";
+        cmnd.Ingredients = "lorem";
+
+        Task<CreateDrug.CreateDrugResponse> response;
+        Assert.ThrowsAsync<BadHttpRequestException>(()=>response = newController.CreateDrug(cmnd));
+    }
     //TODO:
     //1. case-sensitivity check
     //2. createDrug test
@@ -134,5 +167,6 @@ public class UnitTest1
     //6. all tests from presentation
     //7. presentation and documentation
     //8. print reason for test fail
+    //9. Auth test
 
 }

@@ -3,9 +3,9 @@ import { useState } from "react";
 import Header from "../layouts/Header";
 import React, { Fragment } from "react";
 import Breadcrumbs from "../layouts/Breadcrumbs";
-const pagelocation = "Add Medicine";
+const pagelocation = "Edit Medicine";
 
-const AddDrug = (isEdit = false) => {
+const EditDrug = (isEdit = false) => {
   const [drugName, setDrugName] = useState("");
   const [dosage, setDosage] = useState("");
   const [caution, setCaution] = useState("");
@@ -27,7 +27,7 @@ const AddDrug = (isEdit = false) => {
     const url =
       "http://ec2-3-28-239-202.me-central-1.compute.amazonaws.com/api/drugs";
     const options = {
-      method: "POST",
+      method: "PUT",
       headers: {
         Authorization: sessionId,
         Accept: "application/json",
@@ -67,7 +67,6 @@ const AddDrug = (isEdit = false) => {
               className={styles.addDrugInfoSmall}
               type="text"
               name="Drug Name"
-              required
               placeholder="Drug Name"
               value={drugName}
               onChange={(e) => setDrugName(e.target.value)}
@@ -249,4 +248,4 @@ const AddDrug = (isEdit = false) => {
   );
 };
 
-export default AddDrug;
+export default EditDrug;

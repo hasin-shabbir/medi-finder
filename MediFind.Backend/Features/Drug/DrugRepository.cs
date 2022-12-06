@@ -47,7 +47,7 @@ public class DrugRepository
         using IDbConnection connection = _dbContext.GetConnection();
 
         const string sql = @"SELECT drug_id, drug_name, manufacturer, purpose, ingredients FROM drug
-                             WHERE ingredients LIKE @pattern";
+                             WHERE ingredients ILIKE @pattern";
 
         return await connection.QueryAsync<DrugModel>(sql, new { pattern = "%" + ingredients + "%" });
     }
@@ -57,7 +57,7 @@ public class DrugRepository
         using IDbConnection connection = _dbContext.GetConnection();
 
         const string sql = @"SELECT drug_id, drug_name, manufacturer, purpose, ingredients FROM drug
-                             WHERE manufacturer LIKE @pattern";
+                             WHERE manufacturer ILIKE @pattern";
 
         return await connection.QueryAsync<DrugModel>(sql, new { pattern = "%" + manufacturer + "%" });
     }

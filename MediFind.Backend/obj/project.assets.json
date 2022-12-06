@@ -581,23 +581,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hasin\\.nuget\\packages\\": {}
+    "/Users/asali/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hasin\\Desktop\\medi-finder\\Medifind.Backend\\MediFind.Backend.csproj",
+      "projectUniqueName": "/Users/asali/Documents/GitHub/medi-finder/MediFind.Backend/MediFind.Backend.csproj",
       "projectName": "MediFind.Backend",
-      "projectPath": "C:\\Users\\hasin\\Desktop\\medi-finder\\Medifind.Backend\\MediFind.Backend.csproj",
-      "packagesPath": "C:\\Users\\hasin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hasin\\Desktop\\medi-finder\\Medifind.Backend\\obj\\",
+      "projectPath": "/Users/asali/Documents/GitHub/medi-finder/MediFind.Backend/MediFind.Backend.csproj",
+      "packagesPath": "/Users/asali/.nuget/packages/",
+      "outputPath": "/Users/asali/Documents/GitHub/medi-finder/MediFind.Backend/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\hasin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/asali/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
@@ -658,7 +661,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.403/RuntimeIdentifierGraph.json"
       }
     }
   }

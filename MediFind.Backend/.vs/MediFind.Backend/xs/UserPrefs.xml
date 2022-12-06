@@ -1,30 +1,39 @@
 ﻿<Properties StartupConfiguration="{6E039622-17BA-4DBC-B808-A45C247E2601}|Default">
-  <MonoDevelop.Ide.ItemProperties.MediFind.Backend PreferredExecutionTarget="/Applications/Firefox.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Features/Drug/DrugController.cs">
+  <MonoDevelop.Ide.ItemProperties.MediFind.Backend PreferredExecutionTarget="/Applications/Firefox.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Features/User/UserRepository.cs">
     <Files>
-      <File FileName="Features/User/UserRepository.cs" />
+      <File FileName="Features/User/UserRepository.cs" Line="2" Column="10" />
       <File FileName="Features/User/UserModel.cs" />
       <File FileName="Features/User/SignInUser.cs" />
-      <File FileName="Features/User/SignUpUser.cs" Line="14" Column="99" />
+      <File FileName="Features/User/SignUpUser.cs" />
       <File FileName="Features/User/UserController.cs" />
       <File FileName="DbContext.cs" />
-      <File FileName="Features/Drug/DrugRepository.cs" Line="20" Column="152" />
-      <File FileName="Features/Drug/DrugController.cs" Line="43" Column="6" />
-      <File FileName="Features/Drug/CreateDrug.cs" Line="45" Column="48" />
+      <File FileName="Features/Drug/DrugController.cs" Line="1" Column="11" />
+      <File FileName="Features/Drug/CreateDrug.cs" />
       <File FileName="Features/Common/Middleware/AuthenticationMiddleware.cs" />
       <File FileName=".gitignore" />
-      <File FileName="Program.cs" Line="52" Column="20" />
+      <File FileName="Program.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="MediFind.Backend" expanded="True">
             <Node name="MediFind.Backend" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
               <Node name="Features" expanded="True">
                 <Node name="Common" expanded="True" />
                 <Node name="Drug" expanded="True" />
-                <Node name="User" expanded="True" />
+                <Node name="User" expanded="True">
+                  <Node name="UserRepository.cs" selected="True" />
+                </Node>
               </Node>
               <Node name="Properties" expanded="True" />
             </Node>
@@ -33,9 +42,4 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

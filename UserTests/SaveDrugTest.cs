@@ -31,7 +31,7 @@ public class SaveDrugTestClass
     }
 
     [Theory]
-    [InlineData((long)4, 9)]
+    [InlineData((long)5, 9)]
     public async void SaveAndGetSavedDrugTest(long userId, int drugid) {    
         await repo_manager.User.SaveDrug(userId,drugid);
 
@@ -45,9 +45,7 @@ public class SaveDrugTestClass
             }
         }
 
-        // await repo_manager.User.
-        // await repo_manager.User.
-        // await repo_manager.Drug.DeleteDrug(drugid); 
+        await repo_manager.User.DeleteUSD(userId,drugid);
 
         Assert.True(passing);
     }

@@ -205,7 +205,7 @@ public class UnitTest1
         Assert.ThrowsAsync<BadHttpRequestException>(()=>response = newController.UpdateDrug((long)2, drug));
     }
 
-     /**********************************/
+    /**********************************/
     //INSERT HERE UPDATE DRUG SUCCESS//
     /********************************/
 
@@ -239,6 +239,10 @@ public class UnitTest1
         Task response;
         Assert.ThrowsAsync<BadHttpRequestException>(()=>response = newController.DeleteDrug((long)2));
     }
+
+    /**********************************/
+    //INSERT HERE DELETE DRUG SUCCESS//
+    /********************************/
 
     //TODO:
     //1. case-sensitivity check

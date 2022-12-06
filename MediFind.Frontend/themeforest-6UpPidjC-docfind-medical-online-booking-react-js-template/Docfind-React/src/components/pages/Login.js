@@ -3,16 +3,55 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import React, { Fragment } from "react";
 import Headertwo from "../layouts/Headertwo";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const history = useHistory();
+
+  const submitLoginForm = async () => {
+    setError("");
+    const url =
+      "http://ec2-3-28-239-202.me-central-1.compute.amazonaws.com/api/users/sign-in";
+    const options = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    };
+    try {
+      console.log(options);
+      const response = await fetch(url, options);
+      console.log(response);
+      const body = await response.json();
+      console.log(body);
+      if (response.ok) {
+        localStorage.setItem("sessionId", body.sessionId);
+        localStorage.setItem("isAdmin", body.isAdmin);
+        history.push("/");
+      } else {
+        setError(body.message);
+      }
+    } catch (error) {
+      throw error;
+    }
+  };
+
   return (
     <Fragment>
       <Headertwo />
       <div className={styles.form}>
         <h1> Log In to MediFind</h1>
-        <form className={styles.myform} action="process.php" method="POST">
+        <form className={styles.myform}>
           <div className={styles.formGroup}>
             <input
               type="email"
@@ -33,17 +72,21 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+          <p style={{ color: "red" }}>{error != "" && error}</p>
           <div className={styles.formGroup}>
-            <input type="submit" value="Log In" name="submit" />
+            <button type="button" onClick={submitLoginForm}>
+              Log in
+            </button>
           </div>
           <div className={styles.formGroup}>
             <h4>
-              <Link to="#" className={styles.links}>
+              {/* <Link to="#" className={styles.links}>
                 Forgot your password?
-              </Link>
+              </Link> */}
               <br></br>
               Don't have an account yet?
               <Link to="/sign-up" className={styles.links}>
+                {" "}
                 Create Account
               </Link>
             </h4>

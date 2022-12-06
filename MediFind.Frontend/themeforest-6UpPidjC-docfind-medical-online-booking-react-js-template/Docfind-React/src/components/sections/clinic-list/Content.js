@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import drug from '../../../data/drug/drug.json';
+// import drug from '../../../data/drug/drug.json';
 import Pagination from "react-js-pagination";
 
 class Content extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: drug,
+            data: props.drugs,
             activePage: 1,
             itemPerpage: 10,
             favorite: false
@@ -24,7 +24,11 @@ class Content extends Component {
         }
     }
     render() {
-        const paginationData = this.state.data.slice((this.state.activePage - 1) * this.state.itemPerpage, this.state.activePage * this.state.itemPerpage).map((item, i) => {
+        const paginationData = this.props.drugs
+        .slice(
+          (this.state.activePage - 1) * this.state.itemPerpage,
+          this.state.activePage * this.state.itemPerpage
+        ).map((item, i) => {
             return <div className="sigma_team style-17" key={i}>
                 <div className="row no-gutters">
                     <div className="col-md-3">
@@ -35,7 +39,7 @@ class Content extends Component {
                     <div className="col-md-5 col-sm-6">
                         <div className="sigma_team-body">
                             <h5>
-                                <Link to={"/clinic-details/" + item.drugId}>{item.drugName}</Link>
+                                <Link to={"/drug-details/" + item.drugId}>{item.drugName}</Link>
                             </h5>
                             {/* <div className="sigma_team-categories">
                                 <Link to={"/clinic-details/" + item.drugId} className="sigma_team-category">{item.specialist}</Link>

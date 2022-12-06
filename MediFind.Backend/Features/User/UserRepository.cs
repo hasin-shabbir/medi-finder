@@ -109,6 +109,17 @@ public class UserRepository
         await connection.ExecuteAsync(sql, new { userId, drugId });
     }
 
+    // public async Task DeleteUserSavedDrug(long userId, long drugId)
+    // {
+    //     using IDbConnection connection = _dbContext.GetConnection();
+
+    //     const string sql = @"DELETE FROM user_saved_drug
+    //                          WHERE user_id = @userId AND drug_id = @drugId";
+
+    //     await connection.ExecuteAsync(sql, new { userId, drugId });
+    // }
+
+
     public async Task UpdatePasswordHash(long userId, string passwordHash)
     {
         using IDbConnection connection = _dbContext.GetConnection();

@@ -39,11 +39,14 @@ public class UnitTest2
         CancellationToken token = cancelTokenSource.Token;
         
         var cmnd = new SignUpUser.SignUpUserCommand();
-        cmnd.Email = "test12cls@test.com";
+        cmnd.Email = "test19@test.com";
         cmnd.Password = "test8";
         cmnd.FullName = "johndoe";
 
         SignUpUser.SignUpUserResponse response = await handler.Handle(cmnd,token);
+
+        await repo_manager.User.DeleteSession(response.SessionId); 
+        await repo_manager.User.DeleteUser(cmnd.Email);
 
         Assert.Equal(cmnd.Email,response.Email);
     }
@@ -64,6 +67,7 @@ public class UnitTest2
 
         Task<SignUpUser.SignUpUserResponse> response;
         await Assert.ThrowsAsync<Npgsql.PostgresException>(()=>response = handler.Handle(cmnd,token));
+
     }
 
     [Theory]

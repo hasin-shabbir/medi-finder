@@ -54,7 +54,7 @@ public class UpdateDrugTestClass
         drug.Ingredients = "lorem";
 
         Task response;
-        Assert.ThrowsAsync<BadHttpRequestException>(()=>response = newController.UpdateDrug((long)2, drug));
+        Assert.ThrowsAsync<BadHttpRequestException>(()=>response = newController.UpdateDrug((long)2, drug,""));
     }
 
     [Theory]
@@ -81,7 +81,7 @@ public class UpdateDrugTestClass
         drug.Ingredients = "lorem";
 
         Task response;
-        Assert.ThrowsAsync<BadHttpRequestException>(()=>response = newController.UpdateDrug((long)2, drug));
+        Assert.ThrowsAsync<BadHttpRequestException>(()=>response = newController.UpdateDrug((long)2, drug,""));
     }
 
     /**********************************/

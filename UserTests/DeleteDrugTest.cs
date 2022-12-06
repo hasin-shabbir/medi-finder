@@ -41,7 +41,7 @@ public class DeleteDrugTestClass
         newController.ControllerContext.HttpContext.Request.Headers["Authorization"] = authheader;
 
         Task response;
-        Assert.ThrowsAsync<BadHttpRequestException>(()=>response = newController.DeleteDrug((long)2));
+        Assert.ThrowsAsync<BadHttpRequestException>(()=>response = newController.DeleteDrug((long)2,""));
     }
 
     [Theory]
@@ -56,7 +56,7 @@ public class DeleteDrugTestClass
         newController.ControllerContext.HttpContext.Items["UserId"] = null;
 
         Task response;
-        Assert.ThrowsAsync<BadHttpRequestException>(()=>response = newController.DeleteDrug((long)2));
+        Assert.ThrowsAsync<BadHttpRequestException>(()=>response = newController.DeleteDrug((long)2,""));
     }
 
     /**********************************/

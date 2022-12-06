@@ -1,15 +1,11 @@
-using Xunit;
 using Xunit.Abstractions;
-using System;
 using Microsoft.Extensions.Configuration;
 using MediFind.Backend.Features.Drug;
 using Moq;
 using MediatR;
 using MediFind.Backend;
-using Dapper;
 using Microsoft.AspNetCore.Http;
 
-using static MediFind.Backend.Features.Drug.DrugController;
 
 namespace UserTests;
 

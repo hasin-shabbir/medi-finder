@@ -15,7 +15,7 @@ const AdminPage = () => {
       </div>
       <div style={{ display: "inline-block" }}>
         <div className="d-none d-sm-block">
-          <Link to="/" className="sigma_btn btn-sm">
+          <Link to="/edit-drug" className="sigma_btn btn-sm">
             Edit a Drug
           </Link>
         </div>

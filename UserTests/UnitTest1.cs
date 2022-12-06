@@ -8,7 +8,6 @@ using MediatR;
 using MediFind.Backend;
 using Dapper;
 using Microsoft.AspNetCore.Http;
-// using static MediFind.Backend.RepositoryManager;
 
 using static MediFind.Backend.Features.Drug.DrugController;
 
@@ -20,6 +19,9 @@ public class UnitTest1
     private ITestOutputHelper output;
     private Dictionary<string,string> myconfig;
     private Mock<IMediator> mock_mediator;
+    private IConfigurationRoot config;
+    private DbContext curr_context;
+    private RepositoryManager repo_manager;
     
     public UnitTest1(ITestOutputHelper output){
         this.output = output;
@@ -28,18 +30,17 @@ public class UnitTest1
         };
         Dapper.DefaultTypeMap.MatchNamesWithUnderscores = true;
         this.mock_mediator = new Mock<IMediator>();
+        this.config = new ConfigurationBuilder().AddInMemoryCollection(this.myconfig).Build();
+        this.curr_context = new DbContext(this.config);
+        this.repo_manager = new RepositoryManager(this.curr_context);
 
     }
 
     //search by QR code test
     [Fact]
     public void SearchDrugByIdTest()
-    {
-        var config = new ConfigurationBuilder().AddInMemoryCollection(this.myconfig).Build();
-        var curr_context = new DbContext(config);
-        var repo_manager = new RepositoryManager(curr_context);
-        
-        var newController = new MediFind.Backend.Features.Drug.DrugController(mock_mediator.Object,repo_manager);
+    {        
+        var newController = new MediFind.Backend.Features.Drug.DrugController(this.mock_mediator.Object,this.repo_manager);
         var response = newController.GetDrugById(13);
         response.Wait();
     
@@ -54,13 +55,8 @@ public class UnitTest1
     [InlineData(null,"Str",null)]
     [InlineData(null,null,"str")]
     [InlineData(null,null,"Str")]
-    public void SearchDrugTest(string? name,string? ingredients, string? manufacturer){
-
-        var config = new ConfigurationBuilder().AddInMemoryCollection(this.myconfig).Build();
-        var curr_context = new DbContext(config);
-        var repo_manager = new RepositoryManager(curr_context);
-        
-        var newController = new MediFind.Backend.Features.Drug.DrugController(mock_mediator.Object,repo_manager);
+    public void SearchDrugTest(string? name,string? ingredients, string? manufacturer){        
+        var newController = new MediFind.Backend.Features.Drug.DrugController(this.mock_mediator.Object,this.repo_manager);
         var response = newController.SearchDrugs(name,ingredients,manufacturer);
         response.Wait();
         
@@ -106,10 +102,7 @@ public class UnitTest1
     [InlineData("q3p+BwCNBq0kVgZLU+oMZw")]
     [InlineData("ZGV0078ibQmYU5XWQWlpsg")]
     public void createDrugTest_adminFail(String authheader){
-        var config = new ConfigurationBuilder().AddInMemoryCollection(this.myconfig).Build();
-        var curr_context = new DbContext(config);
-        var repo_manager = new RepositoryManager(curr_context);
-        var newController = new MediFind.Backend.Features.Drug.DrugController(mock_mediator.Object,repo_manager);
+        var newController = new MediFind.Backend.Features.Drug.DrugController(this.mock_mediator.Object,this.repo_manager);
         
         newController.ControllerContext = new Microsoft.AspNetCore.Mvc.ControllerContext();
         newController.ControllerContext.HttpContext = new DefaultHttpContext();
@@ -135,15 +128,11 @@ public class UnitTest1
     [InlineData("h82")]
     [InlineData(null)]
     public void createDrugTest_authFail(String authheader){
-        var config = new ConfigurationBuilder().AddInMemoryCollection(this.myconfig).Build();
-        var curr_context = new DbContext(config);
-        var repo_manager = new RepositoryManager(curr_context);
-        var newController = new MediFind.Backend.Features.Drug.DrugController(mock_mediator.Object,repo_manager);
+        var newController = new MediFind.Backend.Features.Drug.DrugController(this.mock_mediator.Object,this.repo_manager);
         
         newController.ControllerContext = new Microsoft.AspNetCore.Mvc.ControllerContext();
         newController.ControllerContext.HttpContext = new DefaultHttpContext();
         newController.ControllerContext.HttpContext.Request.Headers["Authorization"] = authheader;
-
 
         var cmnd = new CreateDrug.CreateDrugCommand();
         cmnd.DrugName = "newDrug1";

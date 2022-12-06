@@ -24,6 +24,16 @@ public class UserRepository
         return await connection.ExecuteScalarAsync<long>(sql, user);
     }
 
+    public async Task DeleteUser(string email)
+    {
+        using IDbConnection connection = _dbContext.GetConnection();
+
+        const string sql = @"DELETE FROM user_
+                             WHERE email = @email";
+
+        await connection.ExecuteAsync(sql, new { email });
+    }
+
     public async Task CreateSession(string sessionId, long userId)
     {
         using IDbConnection connection = _dbContext.GetConnection();

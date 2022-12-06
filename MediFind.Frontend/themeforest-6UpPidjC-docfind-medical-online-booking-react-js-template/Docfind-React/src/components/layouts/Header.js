@@ -11,6 +11,7 @@ class Header extends Navhelper {
       filter: "name",
       inputText: " ",
     };
+
     this.onFilterChange = this.onFilterChange.bind(this);
     this.onInputTextChange = this.onInputTextChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,6 +38,9 @@ class Header extends Navhelper {
   }
 
   render() {
+    const isAdmin = localStorage.getItem("isAdmin") == "true";
+    console.log(isAdmin);
+
     return (
       <Fragment>
         {/* Mobile Menu */}
@@ -125,80 +129,30 @@ class Header extends Navhelper {
                   </div>
                   {/* SearchBar */}
                   <ul className="navbar-nav mr-3">
-                    {/* Data */}
-                    {navigation.map((item, i) => (
-                      <li
-                        key={i}
-                        className={
-                          item.child === true
-                            ? "menu-item menu-item-has-children"
-                            : "menu-item"
-                        }
-                      >
-                        {item.child === true ? (
-                          <Link to="#">{item.linkText}</Link>
-                        ) : (
-                          <Link to={item.link}>{item.linkText}</Link>
-                        )}
-                        {item.child === true ? (
-                          <ul className="sub-menu">
-                            {item.submenu.map((item, i) => (
-                              <li
-                                key={i}
-                                className={
-                                  item.child === true
-                                    ? "menu-item menu-item-has-children"
-                                    : "menu-item"
-                                }
-                              >
-                                {item.child === true ? (
-                                  <Link to="#">{item.linkText}</Link>
-                                ) : (
-                                  <Link to={item.link}>{item.linkText}</Link>
-                                )}
-                                {item.child === true ? (
-                                  <ul className="sub-menu">
-                                    {item.submenu.map((item, i) => (
-                                      <li className="menu-item" key={i}>
-                                        <Link to={item.link}>
-                                          {item.linkText}
-                                        </Link>
-                                      </li>
-                                    ))}
-                                  </ul>
-                                ) : (
-                                  ""
-                                )}
-                              </li>
-                            ))}
-                          </ul>
-                        ) : (
-                          ""
-                        )}
-                      </li>
-                    ))}
-                    {/* Data */}
+                    
                   </ul>
-                  
-                                <a href="/saved-list">
-                                  <img
-                                    src={
-                                      process.env.PUBLIC_URL +
-                                      "/assets/img/bookmark.svg"
-                                    }
-                                    alt="BookmarkIcon"
-                                  />
-                                </a>
-                  
-                                <a href="/">
-                                  <img
-                                    src={
-                                      process.env.PUBLIC_URL +
-                                      "/assets/img/user.svg"
-                                    }
-                                    alt="BookmarkIcon"
-                                  />
-                                </a>
+
+                  <a href="/saved-list">
+                    <img
+                      src={process.env.PUBLIC_URL + "/assets/img/bookmark.svg"}
+                      alt="BookmarkIcon"
+                    />
+                  </a>
+                  {isAdmin ? (
+                    <a href="./admin-page">
+                      <img
+                        src={process.env.PUBLIC_URL + "/assets/img/user.svg"}
+                        alt="BookmarkIcon"
+                      />
+                    </a>
+                  ) : (
+                    <a href="./user-page">
+                      <img
+                        src={process.env.PUBLIC_URL + "/assets/img/user.svg"}
+                        alt="BookmarkIcon"
+                      />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

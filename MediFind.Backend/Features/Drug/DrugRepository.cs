@@ -16,8 +16,8 @@ public class DrugRepository
     {
         using IDbConnection connection = _dbContext.GetConnection();
 
-        const string sql = @"INSERT INTO drug (drug_name, manufacturer, purpose, usage_, dosage, side_effects, storage_, avoid_reasons, details)
-                             VALUES (@DrugName, @Manufacturer, @Purpose, @Usage, @Dosage, @SideEffects, @Storage, @AvoidReasons, @Details)";
+        const string sql = @"INSERT INTO drug (drug_name, manufacturer, purpose, usage_, dosage, side_effects, storage_, avoid_reasons, details, ingredients)
+                             VALUES (@DrugName, @Manufacturer, @Purpose, @Usage, @Dosage, @SideEffects, @Storage, @AvoidReasons, @Details, @Ingredients)";
 
         await connection.ExecuteAsync(sql, drug);
     }
@@ -37,7 +37,7 @@ public class DrugRepository
         using IDbConnection connection = _dbContext.GetConnection();
 
         const string sql = @"SELECT drug_id, drug_name, manufacturer, purpose, ingredients FROM drug
-                             WHERE drug_name LIKE @pattern";
+                             WHERE drug_name ILIKE @pattern";
 
         return await connection.QueryAsync<DrugModel>(sql, new { pattern = "%" + drugName + "%" });
     }

@@ -48,7 +48,7 @@ public class DrugController : ControllerBase
             return await _repositoryManager.Drug.GetDrugsSummaryByIngredients(ingredients);
 
         if (!string.IsNullOrEmpty(manufacturer))
-            return await _repositoryManager.Drug.GetDrugsSummaryByIngredients(manufacturer);
+            return await _repositoryManager.Drug.GetDrugsSummaryByManufacturer(manufacturer);
 
         return Enumerable.Empty<DrugModel>();
     }

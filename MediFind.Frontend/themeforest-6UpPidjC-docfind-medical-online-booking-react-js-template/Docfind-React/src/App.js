@@ -11,6 +11,7 @@ const Login = React.lazy(() => import("./components/pages/Login"));
 const SignUp = React.lazy(() => import("./components/pages/SignUp"));
 const AddDrug = React.lazy(() => import("./components/pages/AddDrug"));
 const UserPage = React.lazy(() => import("./components/pages/UserPage"));
+const AdminPage = React.lazy(() => import("./components/pages/AdminPage"));
 const QRcode = React.lazy(() => import("./components/pages/QRcode"));
 
 // Extra
@@ -43,6 +44,7 @@ function App() {
             <Route exact path="/add-drug" component={AddDrug} />
             <Route exact path="/QR-code/:id" component={QRcode} />
             <Route exact path="/user-page" component={UserPage} />
+            <Route exact path="/admin-page" component={AdminPage} />
 
             {/* Extra */}
             <Route exact path="/error-page" component={Errorpage} />

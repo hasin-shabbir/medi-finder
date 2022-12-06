@@ -1,14 +1,37 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { getDrug } from '../../../helper/drugHelper';
-import ReactDOM from 'react-dom';
+import React, { Component, useEffect, useState } from 'react';
 import {QRCodeSVG} from 'qrcode.react';
 
-class Content extends Component {
-    render() {
-        const detailId = this.props.detailId;
-        const drug = getDrug(detailId);
-        return (
+const Content = (props) => {
+    const detailId = props.detailId;
+    const [drug, setDrug] = useState([])
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+          const url =
+            "http://ec2-3-28-239-202.me-central-1.compute.amazonaws.com/api/drugs/" + detailId;
+          const options = {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+            },
+          };
+          try {
+            const response = await fetch(url, options);
+            const body = await response.json();
+            setDrug(body);
+          } catch (error) {
+            throw error;
+          }
+        };
+    
+        fetchData();
+      }, []);
+    
+
+    return(
             <div className="section sigma_post-details">
                 <div className="container">
                     <div className="row">
@@ -19,7 +42,7 @@ class Content extends Component {
                                     <div id="overview">
                                         <h3>QR Code Of {drug.drugName}</h3>
                                         <div>
-                                                <QRCodeSVG value={"http://localhost:3000/medifind/drug-details/" +  this.props.detailId}/>,
+                                                <QRCodeSVG value={"http://localhost:3000/medifind/drug-details/" +  props.detailId}/>,
                                             
                                             <br></br>
 
@@ -33,8 +56,7 @@ class Content extends Component {
                     </div>
                 </div>
             </div>
-        );
-    }
-}
+    );
+};
 
 export default Content;

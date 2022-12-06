@@ -31,7 +31,6 @@ public class UnitTest4
     }
     
     private async Task<SignInUser.SignInUserResponse> signInMock(){
-        
         var handler = new SignInUser.Handler(this.repo_manager);
         
         CancellationTokenSource cancelTokenSource = new CancellationTokenSource();

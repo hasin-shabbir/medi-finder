@@ -129,6 +129,7 @@ public class UnitTest1
         newController.ControllerContext = new Microsoft.AspNetCore.Mvc.ControllerContext();
         newController.ControllerContext.HttpContext = new DefaultHttpContext();
         newController.ControllerContext.HttpContext.Request.Headers["Authorization"] = authheader;
+        newController.ControllerContext.HttpContext.Items["UserId"] = null;
 
         var cmnd = new CreateDrug.CreateDrugCommand();
         cmnd.DrugName = "newDrug1";
@@ -145,6 +146,68 @@ public class UnitTest1
         Task<CreateDrug.CreateDrugResponse> response;
         Assert.ThrowsAsync<BadHttpRequestException>(()=>response = newController.CreateDrug(cmnd));
     }
+
+    /**********************************/
+    //INSERT HERE CREATE DRUG SUCCESS//
+    /********************************/
+
+    [Theory]
+    [InlineData("h0FsK78HXYCMTUSOKMDB1g")]
+    [InlineData("q3p+BwCNBq0kVgZLU+oMZw")]
+    [InlineData("ZGV0078ibQmYU5XWQWlpsg")]
+    public void updateDrugTest_adminFail(String authheader){
+        var newController = new MediFind.Backend.Features.Drug.DrugController(this.mock_mediator.Object,this.repo_manager);
+        
+        newController.ControllerContext = new Microsoft.AspNetCore.Mvc.ControllerContext();
+        newController.ControllerContext.HttpContext = new DefaultHttpContext();
+        newController.ControllerContext.HttpContext.Request.Headers["Authorization"] = authheader;
+
+        var drug = new DrugModel();
+        drug.DrugName = "updatedDrug1";
+        drug.Manufacturer = "updatedMan1";
+        drug.Purpose = "testing";
+        drug.Usage = "do not use";
+        drug.Dosage = "only during test";
+        drug.SideEffects = "unknown";
+        drug.Storage = "on github";
+        drug.AvoidReasons = "if not test env";
+        drug.Details = "lorem ipsum";
+        drug.Ingredients = "lorem";
+
+        Task response;
+        Assert.ThrowsAsync<BadHttpRequestException>(()=>response = newController.UpdateDrug((long)2, drug));
+    }
+
+    [Theory]
+    [InlineData("8ehrfg7")]
+    [InlineData(null)]
+    public void updateDrugTest_authFail(String authheader){
+        var newController = new MediFind.Backend.Features.Drug.DrugController(this.mock_mediator.Object,this.repo_manager);
+        
+        newController.ControllerContext = new Microsoft.AspNetCore.Mvc.ControllerContext();
+        newController.ControllerContext.HttpContext = new DefaultHttpContext();
+        newController.ControllerContext.HttpContext.Request.Headers["Authorization"] = authheader;
+        newController.ControllerContext.HttpContext.Items["UserId"] = null;
+
+        var drug = new DrugModel();
+        drug.DrugName = "updatedDrug1";
+        drug.Manufacturer = "updatedMan1";
+        drug.Purpose = "testing";
+        drug.Usage = "do not use";
+        drug.Dosage = "only during test";
+        drug.SideEffects = "unknown";
+        drug.Storage = "on github";
+        drug.AvoidReasons = "if not test env";
+        drug.Details = "lorem ipsum";
+        drug.Ingredients = "lorem";
+
+        Task response;
+        Assert.ThrowsAsync<BadHttpRequestException>(()=>response = newController.UpdateDrug((long)2, drug));
+    }
+
+     /**********************************/
+    //INSERT HERE UPDATE DRUG SUCCESS//
+    /********************************/
 
     //TODO:
     //1. case-sensitivity check

@@ -29,20 +29,43 @@ public class UnitTest2
         this.repo_manager = new RepositoryManager(this.curr_context);
 
     }
+    
+    [Theory]
+    [InlineData("test8@test.com","test8")]
+    [InlineData("test9@test.com","test8")]
+    public async void SignInTest(String username, String password)
+    {        
+        var handler = new SignInUser.Handler(this.repo_manager);
+        
+        CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
+        CancellationToken token = cancelTokenSource.Token;
+
+        var cmnd = new SignInUser.SignInUserCommand();
+        cmnd.Email = username;
+        cmnd.Password = password;
+        
+        SignInUser.SignInUserResponse response = await handler.Handle(cmnd,token);
+    
+        Assert.NotNull(response.SessionId);
+        Assert.Equal(cmnd.Email,response.Email);
+    }
+
+
 
     [Fact]
     public async void SignUpTest()
     {        
         // var newController = new MediFind.Backend.Features.User.UserController(this.mock_mediator.Object,this.repo_manager);
         var handler = new SignUpUser.Handler(this.repo_manager);
-        
-        var cmnd = new SignUpUser.SignUpUserCommand();
-        cmnd.Email = "test10@test.com";
-        cmnd.Password = "test8";
-        cmnd.FullName = "johndoe";
 
         CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
         CancellationToken token = cancelTokenSource.Token;
+        
+        var cmnd = new SignUpUser.SignUpUserCommand();
+        cmnd.Email = "test11cls@test.com";
+        cmnd.Password = "test8";
+        cmnd.FullName = "johndoe";
+
 
         SignUpUser.SignUpUserResponse response = await handler.Handle(cmnd,token);
 
@@ -55,14 +78,14 @@ public class UnitTest2
     {        
         // var newController = new MediFind.Backend.Features.User.UserController(this.mock_mediator.Object,this.repo_manager);
         var handler = new SignUpUser.Handler(this.repo_manager);
+
+        CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
+        CancellationToken token = cancelTokenSource.Token;
         
         var cmnd = new SignUpUser.SignUpUserCommand();
         cmnd.Email = email;
         cmnd.Password = "test8";
         cmnd.FullName = "johndoe";
-
-        CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
-        CancellationToken token = cancelTokenSource.Token;
 
         Task<SignUpUser.SignUpUserResponse> response;
         await Assert.ThrowsAsync<Npgsql.PostgresException>(()=>response = handler.Handle(cmnd,token));
@@ -74,14 +97,14 @@ public class UnitTest2
     {        
         // var newController = new MediFind.Backend.Features.User.UserController(this.mock_mediator.Object,this.repo_manager);
         var handler = new SignUpUser.Handler(this.repo_manager);
+
+        CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
+        CancellationToken token = cancelTokenSource.Token;
         
         var cmnd = new SignUpUser.SignUpUserCommand();
         cmnd.Email = "test404@test.com";
         cmnd.Password = password;
         cmnd.FullName = "johndoe";
-
-        CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
-        CancellationToken token = cancelTokenSource.Token;
 
         Task<SignUpUser.SignUpUserResponse> response;
         await Assert.ThrowsAsync<System.ArgumentNullException>(()=>response = handler.Handle(cmnd,token));
@@ -93,18 +116,23 @@ public class UnitTest2
     {        
         // var newController = new MediFind.Backend.Features.User.UserController(this.mock_mediator.Object,this.repo_manager);
         var handler = new SignUpUser.Handler(this.repo_manager);
+
+        CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
+        CancellationToken token = cancelTokenSource.Token;
         
         var cmnd = new SignUpUser.SignUpUserCommand();
         cmnd.Email = "test404@test.com";
         cmnd.Password = "hiii4";
         cmnd.FullName = username;
 
-        CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
-        CancellationToken token = cancelTokenSource.Token;
-
         Task<SignUpUser.SignUpUserResponse> response;
         await Assert.ThrowsAsync<Npgsql.PostgresException>(()=>response = handler.Handle(cmnd,token));
 
     }
 
+
+
+
+    //TODO: 
+    //1. Delete user after signup test
 }

@@ -1,10 +1,8 @@
 using Xunit.Abstractions;
 using Microsoft.Extensions.Configuration;
-using MediFind.Backend.Features.User;
 using Moq;
 using MediatR;
 using MediFind.Backend;
-using Microsoft.AspNetCore.Http;
 
 namespace SaveDrugTests;
 

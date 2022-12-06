@@ -1,6 +1,5 @@
 using Xunit.Abstractions;
 using Microsoft.Extensions.Configuration;
-using MediFind.Backend.Features.Drug;
 using Moq;
 using MediatR;
 using MediFind.Backend;

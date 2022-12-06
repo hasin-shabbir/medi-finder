@@ -209,6 +209,37 @@ public class UnitTest1
     //INSERT HERE UPDATE DRUG SUCCESS//
     /********************************/
 
+
+    [Theory]
+    [InlineData("h0FsK78HXYCMTUSOKMDB1g")]
+    [InlineData("q3p+BwCNBq0kVgZLU+oMZw")]
+    [InlineData("ZGV0078ibQmYU5XWQWlpsg")]
+    public void deleteDrugTest_adminFail(String authheader){
+        var newController = new MediFind.Backend.Features.Drug.DrugController(this.mock_mediator.Object,this.repo_manager);
+        
+        newController.ControllerContext = new Microsoft.AspNetCore.Mvc.ControllerContext();
+        newController.ControllerContext.HttpContext = new DefaultHttpContext();
+        newController.ControllerContext.HttpContext.Request.Headers["Authorization"] = authheader;
+
+        Task response;
+        Assert.ThrowsAsync<BadHttpRequestException>(()=>response = newController.DeleteDrug((long)2));
+    }
+
+    [Theory]
+    [InlineData("huokd73")]
+    [InlineData(null)]
+    public void deleteDrugTest_authFail(String authheader){
+        var newController = new MediFind.Backend.Features.Drug.DrugController(this.mock_mediator.Object,this.repo_manager);
+        
+        newController.ControllerContext = new Microsoft.AspNetCore.Mvc.ControllerContext();
+        newController.ControllerContext.HttpContext = new DefaultHttpContext();
+        newController.ControllerContext.HttpContext.Request.Headers["Authorization"] = authheader;
+        newController.ControllerContext.HttpContext.Items["UserId"] = null;
+
+        Task response;
+        Assert.ThrowsAsync<BadHttpRequestException>(()=>response = newController.DeleteDrug((long)2));
+    }
+
     //TODO:
     //1. case-sensitivity check
     //2. createDrug test success

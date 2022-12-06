@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 
 const Content = (props) => {
   const detailId = props.detailId;
-  const [drug, setDrug] = useState([])
-  
+  const [drug, setDrug] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       const url =
-        "http://ec2-3-28-239-202.me-central-1.compute.amazonaws.com/api/drugs/" + detailId;
+        "http://ec2-3-28-239-202.me-central-1.compute.amazonaws.com/api/drugs/" +
+        detailId;
       const options = {
         method: "GET",
         headers: {
@@ -31,8 +32,6 @@ const Content = (props) => {
     fetchData();
   }, []);
 
-
-
   return (
     <div className="section sigma_post-details">
       <div className="container">
@@ -45,7 +44,12 @@ const Content = (props) => {
                     <div className="col-md-4">
                       <div className="sigma_team-thumb">
                         <img
-                          src={process.env.PUBLIC_URL + "/" + drug.image}
+                          src={
+                            process.env.PUBLIC_URL +
+                            "/assets/img/drug/" +
+                            drug.drugId +
+                            ".jpg"
+                          }
                           alt={drug.drugName}
                         />
                       </div>

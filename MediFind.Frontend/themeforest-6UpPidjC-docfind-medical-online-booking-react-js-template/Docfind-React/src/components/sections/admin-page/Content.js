@@ -20,11 +20,11 @@ const AdminPage = () => {
           </Link>
         </div>
       </div>
-      <div className="d-none d-sm-block">
+      {/* <div className="d-none d-sm-block">
         <Link to="/" className="sigma_btn btn-sm">
           Delete a Drug
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 };

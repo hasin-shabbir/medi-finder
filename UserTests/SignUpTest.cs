@@ -4,11 +4,10 @@ using MediFind.Backend.Features.User;
 using Moq;
 using MediatR;
 using MediFind.Backend;
-using Microsoft.AspNetCore.Http;
 
 namespace SignUpTests;
 
-public class UnitTest2
+public class SignUpTestClass
 {   
     private ITestOutputHelper output;
     private Dictionary<string,string> myconfig;
@@ -17,7 +16,7 @@ public class UnitTest2
     private DbContext curr_context;
     private RepositoryManager repo_manager;
     
-    public UnitTest2(ITestOutputHelper output){
+    public SignUpTestClass(ITestOutputHelper output){
         this.output = output;
         this.myconfig = new Dictionary<string, string> {
             {"ConnectionStrings:Database","Host=medifind-db.cwi0wezznrhn.me-central-1.rds.amazonaws.com:5432;Username=postgres;Password=Medifind123;Database=postgres"}

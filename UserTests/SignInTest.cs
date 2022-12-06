@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace SignInTests;
 
-public class UnitTest3
+public class SignInTestClass
 {   
     private ITestOutputHelper output;
     private Dictionary<string,string> myconfig;
@@ -17,7 +17,7 @@ public class UnitTest3
     private DbContext curr_context;
     private RepositoryManager repo_manager;
     
-    public UnitTest3(ITestOutputHelper output){
+    public SignInTestClass(ITestOutputHelper output){
         this.output = output;
         this.myconfig = new Dictionary<string, string> {
             {"ConnectionStrings:Database","Host=medifind-db.cwi0wezznrhn.me-central-1.rds.amazonaws.com:5432;Username=postgres;Password=Medifind123;Database=postgres"}

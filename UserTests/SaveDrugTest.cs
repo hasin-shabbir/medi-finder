@@ -1,14 +1,12 @@
 using Xunit.Abstractions;
 using Microsoft.Extensions.Configuration;
-using MediFind.Backend.Features.User;
 using Moq;
 using MediatR;
 using MediFind.Backend;
-using Microsoft.AspNetCore.Http;
 
-namespace SignOutTests;
+namespace SaveDrugTests;
 
-public class UnitTest5
+public class SaveDrugTestClass
 {   
     private ITestOutputHelper output;
     private Dictionary<string,string> myconfig;
@@ -17,7 +15,7 @@ public class UnitTest5
     private DbContext curr_context;
     private RepositoryManager repo_manager;
     
-    public UnitTest5(ITestOutputHelper output){
+    public SaveDrugTestClass(ITestOutputHelper output){
         this.output = output;
         this.myconfig = new Dictionary<string, string> {
             {"ConnectionStrings:Database","Host=medifind-db.cwi0wezznrhn.me-central-1.rds.amazonaws.com:5432;Username=postgres;Password=Medifind123;Database=postgres"}
@@ -31,11 +29,11 @@ public class UnitTest5
     }
 
     [Theory]
-    [InlineData(9)]
-    public async void SaveAndGetSavedDrugTest(int drugid) {    
-        await repo_manager.User.SaveDrug((long)2,drugid);
+    [InlineData((long)5, 9)]
+    public async void SaveAndGetSavedDrugTest(long userId, int drugid) {    
+        await repo_manager.User.SaveDrug(userId,drugid);
 
-        var response = await repo_manager.User.GetSavedDrugs(2);
+        var response = await repo_manager.User.GetSavedDrugs(userId);
         var res_list = response.ToList();
         bool passing = false;
         foreach (var res in res_list){
@@ -44,6 +42,8 @@ public class UnitTest5
                 break;
             }
         }
+
+        await repo_manager.User.DeleteUSD(userId,drugid);
 
         Assert.True(passing);
     }

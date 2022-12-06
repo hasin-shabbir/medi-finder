@@ -33,7 +33,7 @@ public class UnitTest2
     [Theory]
     [InlineData("test8@test.com","test8")]
     [InlineData("test9@test.com","test8")]
-    public async void SignInTest(String username, String password)
+    public async void SignInTest_success(String username, String password)
     {        
         var handler = new SignInUser.Handler(this.repo_manager);
         
@@ -50,7 +50,59 @@ public class UnitTest2
         Assert.Equal(cmnd.Email,response.Email);
     }
 
+    [Theory]
+    [InlineData("hasin","test8")]
+    [InlineData(null,"test8")]
+    public async void SignInTest_invalidEmail(String username, String password)
+    {        
+        var handler = new SignInUser.Handler(this.repo_manager);
+        
+        CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
+        CancellationToken token = cancelTokenSource.Token;
 
+        var cmnd = new SignInUser.SignInUserCommand();
+        cmnd.Email = username;
+        cmnd.Password = password;
+    
+        Task<SignInUser.SignInUserResponse> response;
+        await Assert.ThrowsAsync<BadHttpRequestException>(()=>response = handler.Handle(cmnd,token));
+    }
+
+    [Theory]
+    [InlineData("test8@test.com","edfrgthj")]
+    [InlineData("test9@test.com","frgthyju")]
+    public async void SignInTest_invalidPass(String username, String password)
+    {        
+        var handler = new SignInUser.Handler(this.repo_manager);
+        
+        CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
+        CancellationToken token = cancelTokenSource.Token;
+
+        var cmnd = new SignInUser.SignInUserCommand();
+        cmnd.Email = username;
+        cmnd.Password = password;
+    
+        Task<SignInUser.SignInUserResponse> response;
+        await Assert.ThrowsAsync<BadHttpRequestException>(()=>response = handler.Handle(cmnd,token));
+    }
+
+    [Theory]
+    [InlineData("test8@test.com",null)]
+    [InlineData("test9@test.com",null)]
+    public async void SignInTest_missingPass(String username, String password)
+    {        
+        var handler = new SignInUser.Handler(this.repo_manager);
+        
+        CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
+        CancellationToken token = cancelTokenSource.Token;
+
+        var cmnd = new SignInUser.SignInUserCommand();
+        cmnd.Email = username;
+        cmnd.Password = password;
+    
+        Task<SignInUser.SignInUserResponse> response;
+        await Assert.ThrowsAsync<System.ArgumentNullException>(()=>response = handler.Handle(cmnd,token));
+    }
 
     [Fact]
     public async void SignUpTest()
@@ -65,7 +117,6 @@ public class UnitTest2
         cmnd.Email = "test11cls@test.com";
         cmnd.Password = "test8";
         cmnd.FullName = "johndoe";
-
 
         SignUpUser.SignUpUserResponse response = await handler.Handle(cmnd,token);
 

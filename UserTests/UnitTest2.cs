@@ -6,7 +6,7 @@ using MediatR;
 using MediFind.Backend;
 using Microsoft.AspNetCore.Http;
 
-namespace UserTests;
+namespace SignUpTests;
 
 public class UnitTest2
 {   
@@ -29,80 +29,6 @@ public class UnitTest2
         this.repo_manager = new RepositoryManager(this.curr_context);
 
     }
-    
-    [Theory]
-    [InlineData("test8@test.com","test8")]
-    [InlineData("test9@test.com","test8")]
-    public async void SignInTest_success(String username, String password)
-    {        
-        var handler = new SignInUser.Handler(this.repo_manager);
-        
-        CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
-        CancellationToken token = cancelTokenSource.Token;
-
-        var cmnd = new SignInUser.SignInUserCommand();
-        cmnd.Email = username;
-        cmnd.Password = password;
-        
-        SignInUser.SignInUserResponse response = await handler.Handle(cmnd,token);
-    
-        Assert.NotNull(response.SessionId);
-        Assert.Equal(cmnd.Email,response.Email);
-    }
-
-    [Theory]
-    [InlineData("hasin","test8")]
-    [InlineData(null,"test8")]
-    public async void SignInTest_invalidEmail(String username, String password)
-    {        
-        var handler = new SignInUser.Handler(this.repo_manager);
-        
-        CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
-        CancellationToken token = cancelTokenSource.Token;
-
-        var cmnd = new SignInUser.SignInUserCommand();
-        cmnd.Email = username;
-        cmnd.Password = password;
-    
-        Task<SignInUser.SignInUserResponse> response;
-        await Assert.ThrowsAsync<BadHttpRequestException>(()=>response = handler.Handle(cmnd,token));
-    }
-
-    [Theory]
-    [InlineData("test8@test.com","edfrgthj")]
-    [InlineData("test9@test.com","frgthyju")]
-    public async void SignInTest_invalidPass(String username, String password)
-    {        
-        var handler = new SignInUser.Handler(this.repo_manager);
-        
-        CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
-        CancellationToken token = cancelTokenSource.Token;
-
-        var cmnd = new SignInUser.SignInUserCommand();
-        cmnd.Email = username;
-        cmnd.Password = password;
-    
-        Task<SignInUser.SignInUserResponse> response;
-        await Assert.ThrowsAsync<BadHttpRequestException>(()=>response = handler.Handle(cmnd,token));
-    }
-
-    [Theory]
-    [InlineData("test8@test.com",null)]
-    [InlineData("test9@test.com",null)]
-    public async void SignInTest_missingPass(String username, String password)
-    {        
-        var handler = new SignInUser.Handler(this.repo_manager);
-        
-        CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
-        CancellationToken token = cancelTokenSource.Token;
-
-        var cmnd = new SignInUser.SignInUserCommand();
-        cmnd.Email = username;
-        cmnd.Password = password;
-    
-        Task<SignInUser.SignInUserResponse> response;
-        await Assert.ThrowsAsync<System.ArgumentNullException>(()=>response = handler.Handle(cmnd,token));
-    }
 
     [Fact]
     public async void SignUpTest()
@@ -113,7 +39,7 @@ public class UnitTest2
         CancellationToken token = cancelTokenSource.Token;
         
         var cmnd = new SignUpUser.SignUpUserCommand();
-        cmnd.Email = "test11cls@test.com";
+        cmnd.Email = "test12cls@test.com";
         cmnd.Password = "test8";
         cmnd.FullName = "johndoe";
 
@@ -176,10 +102,6 @@ public class UnitTest2
         await Assert.ThrowsAsync<Npgsql.PostgresException>(()=>response = handler.Handle(cmnd,token));
 
     }
-
-
-
-
     //TODO: 
     //1. Delete user after signup test
 }

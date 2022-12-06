@@ -107,7 +107,6 @@ public class UnitTest2
     [Fact]
     public async void SignUpTest()
     {        
-        // var newController = new MediFind.Backend.Features.User.UserController(this.mock_mediator.Object,this.repo_manager);
         var handler = new SignUpUser.Handler(this.repo_manager);
 
         CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
@@ -127,7 +126,6 @@ public class UnitTest2
     [InlineData(null)]
     public async void SignUpTest_missingEmail(String email)
     {        
-        // var newController = new MediFind.Backend.Features.User.UserController(this.mock_mediator.Object,this.repo_manager);
         var handler = new SignUpUser.Handler(this.repo_manager);
 
         CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
@@ -146,7 +144,6 @@ public class UnitTest2
     [InlineData(null)]
     public async void SignUpTest_missingPass(String password)
     {        
-        // var newController = new MediFind.Backend.Features.User.UserController(this.mock_mediator.Object,this.repo_manager);
         var handler = new SignUpUser.Handler(this.repo_manager);
 
         CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
@@ -165,7 +162,6 @@ public class UnitTest2
     [InlineData(null)]
     public async void SignUpTest_missingUserName(String username)
     {        
-        // var newController = new MediFind.Backend.Features.User.UserController(this.mock_mediator.Object,this.repo_manager);
         var handler = new SignUpUser.Handler(this.repo_manager);
 
         CancellationTokenSource cancelTokenSource = new CancellationTokenSource();

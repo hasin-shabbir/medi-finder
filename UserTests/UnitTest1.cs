@@ -6,9 +6,7 @@ using MediatR;
 using MediFind.Backend;
 using Microsoft.AspNetCore.Http;
 
-
-namespace UserTests;
-
+namespace DrugTests;
 
 public class UnitTest1
 {   

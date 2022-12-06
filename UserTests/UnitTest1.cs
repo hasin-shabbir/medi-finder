@@ -49,8 +49,11 @@ public class UnitTest1
     //search by name, ingredient, and/or manufacturer
     [Theory]
     [InlineData("str",null,null)]
+    [InlineData("Str",null,null)]
     [InlineData(null,"str",null)]
+    [InlineData(null,"Str",null)]
     [InlineData(null,null,"str")]
+    [InlineData(null,null,"Str")]
     public void SearchDrugTest(string? name,string? ingredients, string? manufacturer){
 
         var config = new ConfigurationBuilder().AddInMemoryCollection(this.myconfig).Build();
@@ -140,7 +143,6 @@ public class UnitTest1
         newController.ControllerContext = new Microsoft.AspNetCore.Mvc.ControllerContext();
         newController.ControllerContext.HttpContext = new DefaultHttpContext();
         newController.ControllerContext.HttpContext.Request.Headers["Authorization"] = authheader;
-        newController.ControllerContext.HttpContext.Items["UserId"] = null;
 
 
         var cmnd = new CreateDrug.CreateDrugCommand();
@@ -158,9 +160,10 @@ public class UnitTest1
         Task<CreateDrug.CreateDrugResponse> response;
         Assert.ThrowsAsync<BadHttpRequestException>(()=>response = newController.CreateDrug(cmnd));
     }
+
     //TODO:
     //1. case-sensitivity check
-    //2. createDrug test
+    //2. createDrug test success
     //3. mini-tests
     //4. validation, integration, unit tests
     //5. github integrations and build tests

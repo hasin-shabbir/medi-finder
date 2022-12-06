@@ -43,13 +43,12 @@ public class UnitTest1
 
     //search by name, ingredient, and/or manufacturer
     [Theory]
-    [InlineData("str",null,null)]
-    [InlineData("Str",null,null)]
+    [InlineData("Benylin",null,null)]
     [InlineData(null,"str",null)]
     [InlineData(null,"Str",null)]
     [InlineData(null,null,"str")]
     [InlineData(null,null,"Str")]
-    public void SearchDrugTest(string? name,string? ingredients, string? manufacturer){        
+    public void SearchDrugTest(String? name,String? ingredients, String? manufacturer){        
         var newController = new MediFind.Backend.Features.Drug.DrugController(this.mock_mediator.Object,this.repo_manager);
         var response = newController.SearchDrugs(name,ingredients,manufacturer);
         response.Wait();

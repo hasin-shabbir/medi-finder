@@ -130,6 +130,4 @@ public class SignUpTestClass
         await Assert.ThrowsAsync<Npgsql.PostgresException>(()=>response = handler.Handle(cmnd,token));
 
     }
-    //TODO: 
-    //1. Delete user after signup test
 }

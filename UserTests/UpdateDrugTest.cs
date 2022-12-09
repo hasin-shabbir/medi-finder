@@ -150,19 +150,4 @@ public class UpdateDrugTestClass
         Assert.ThrowsAsync<BadHttpRequestException>(()=>response = newController.UpdateDrug((long)2, drug,""));
     }
 
-    /**********************************/
-    //INSERT HERE UPDATE DRUG SUCCESS//
-    /********************************/
-
-    //TODO:
-    //1. case-sensitivity check
-    //2. createDrug test success
-    //3. mini-tests
-    //4. validation, integration, unit tests
-    //5. github integrations and build tests
-    //6. all tests from presentation
-    //7. presentation and documentation
-    //8. print reason for test fail
-    //9. Auth test
-
 }

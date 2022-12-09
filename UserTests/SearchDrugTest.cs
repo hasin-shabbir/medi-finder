@@ -100,16 +100,4 @@ public class SearchDrugTestClass
         Assert.True(manufacturer_pass);
     }
 
-    //TODO:
-    //0. Comments
-    //1. case-sensitivity check!! esp search drug and then elsewhere
-    //2. createDrug test success
-    //3. mini-tests
-    //4. validation, integration, unit tests
-    //5. github integrations and build tests
-    //6. all tests from presentation
-    //7. presentation and documentation
-    //8. print reason for test fail
-    //9. Auth test
-
 }

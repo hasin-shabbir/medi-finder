@@ -40,13 +40,7 @@ const Content = (props) => {
                 <div id="overview">
                   <h3>QR Code Of {drug.drugName}</h3>
                   <div>
-                    <QRCodeSVG
-                      value={
-                        "http://localhost:3000/medifind/drug-details/" +
-                        props.detailId
-                      }
-                    />
-                    ,<br></br>
+                    <QRCodeSVG value={window.location.href} />,<br></br>
                   </div>
                 </div>
               </div>

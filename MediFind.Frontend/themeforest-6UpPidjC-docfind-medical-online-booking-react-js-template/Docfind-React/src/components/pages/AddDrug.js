@@ -68,7 +68,7 @@ const AddDrug = (isEdit = false) => {
               type="text"
               name="Drug Name"
               required
-              placeholder="Drug Name"
+              placeholder="*Drug Name"
               value={drugName}
               onChange={(e) => setDrugName(e.target.value)}
             />
@@ -81,7 +81,7 @@ const AddDrug = (isEdit = false) => {
               className={styles.addDrugInfoLarge}
               name="Purpose"
               required
-              placeholder="Drug Purpose"
+              placeholder="*Drug Purpose"
               value={purpose}
               onChange={(e) => setPurpose(e.target.value)}
             />
@@ -93,7 +93,7 @@ const AddDrug = (isEdit = false) => {
               className={styles.addDrugInfoLarge}
               name="Dosage"
               required
-              placeholder="Drug Dosage"
+              placeholder="*Drug Dosage"
               value={dosage}
               onChange={(e) => setDosage(e.target.value)}
             />
@@ -105,7 +105,7 @@ const AddDrug = (isEdit = false) => {
               className={styles.addDrugInfoLarge}
               name="Manufacturer"
               required
-              placeholder="Manufacturer"
+              placeholder="*Manufacturer"
               value={manufacturer}
               onChange={(e) => setManufacturer(e.target.value)}
             />
@@ -130,7 +130,7 @@ const AddDrug = (isEdit = false) => {
               type="text"
               name="Ingredients"
               required
-              placeholder="Drug Ingredients"
+              placeholder="*Drug Ingredients"
               value={ingredients}
               onChange={(e) => setIngredients(e.target.value)}
             />
@@ -142,7 +142,7 @@ const AddDrug = (isEdit = false) => {
               type="text"
               name="Details"
               required
-              placeholder="Drug Details"
+              placeholder="*Drug Details"
               value={details}
               onChange={(e) => setDetails(e.target.value)}
             />
@@ -155,7 +155,7 @@ const AddDrug = (isEdit = false) => {
               type="text"
               name="Usage"
               required
-              placeholder="Drug Usage"
+              placeholder="*Drug Usage"
               value={usage}
               onChange={(e) => setUsage(e.target.value)}
             />
@@ -168,7 +168,7 @@ const AddDrug = (isEdit = false) => {
               type="text"
               name="Storage"
               required
-              placeholder="Storage"
+              placeholder="*Storage"
               value={storage}
               onChange={(e) => setStorage(e.target.value)}
             />
@@ -181,7 +181,7 @@ const AddDrug = (isEdit = false) => {
               type="text"
               name="Side Effcts"
               required
-              placeholder="SideEffects"
+              placeholder="*SideEffects"
               value={sideEffects}
               onChange={(e) => setSideEffects(e.target.value)}
             />
@@ -194,7 +194,7 @@ const AddDrug = (isEdit = false) => {
               type="text"
               name="avoidReasons"
               required
-              placeholder="Avoid Reasons"
+              placeholder="*Avoid Reasons"
               value={avoidReasons}
               onChange={(e) => setAvoidReasons(e.target.value)}
             />
@@ -217,7 +217,6 @@ const AddDrug = (isEdit = false) => {
               styles={{ borderColor: "white" }}
               type="file"
               name="addImage"
-              placeholder="Industries"
               value={image}
               onChange={(e) => setImage(e.target.value)}
             />

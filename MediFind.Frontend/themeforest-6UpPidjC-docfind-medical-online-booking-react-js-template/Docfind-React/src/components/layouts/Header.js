@@ -110,24 +110,23 @@ class Header extends Navhelper {
                                 required
                               />
                               <div className="input-group-append pr-5">
-                                <button>
-                                  <a
-                                    href={
-                                      "/search-results?filter=" +
-                                      this.state.filter +
-                                      "&text=" +
-                                      this.state.inputText
+                                <a
+                                  className="sigma_btn"
+                                  href={
+                                    "search-results?filter=" +
+                                    this.state.filter +
+                                    "&text=" +
+                                    this.state.inputText
+                                  }
+                                >
+                                  <img
+                                    src={
+                                      process.env.PUBLIC_URL +
+                                      "/assets/img/SearchIcon.svg"
                                     }
-                                  >
-                                    <img
-                                      src={
-                                        process.env.PUBLIC_URL +
-                                        "/assets/img/SearchIcon.svg"
-                                      }
-                                      alt="searchIcon"
-                                    />
-                                  </a>
-                                </button>
+                                    alt="searchIcon"
+                                  />
+                                </a>
                               </div>
                             </div>
                           </div>

@@ -64,19 +64,17 @@ class CustomSearch extends Component {
                         required
                       />
                       <div className="input-group-append">
-                        <button>
-                          <a
-                            style={{ color: "#fff" }}
-                            href={
-                              "/search-results?filter=" +
-                              this.state.filter +
-                              "&text=" +
-                              this.state.inputText
-                            }
-                          >
-                            Find Now
-                          </a>
-                        </button>
+                        <a
+                          className="sigma_btn"
+                          href={
+                            "search-results?filter=" +
+                            this.state.filter +
+                            "&text=" +
+                            this.state.inputText
+                          }
+                        >
+                          Find Now
+                        </a>
                       </div>
                     </div>
                   </div>

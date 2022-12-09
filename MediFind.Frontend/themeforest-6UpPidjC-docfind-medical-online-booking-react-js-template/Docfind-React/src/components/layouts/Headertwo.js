@@ -109,7 +109,9 @@ class Headertwo extends Navhelper {
                                 <a
                                   className="sigma_btn"
                                   href={
-                                    "search-results?filter=" +
+                                    "//" +
+                                    window.location.host +
+                                    "/medi-finder/search-results?filter=" +
                                     this.state.filter +
                                     "&text=" +
                                     this.state.inputText

@@ -1,4 +1,4 @@
-#How to use Medifind
+# How to use Medifind
 
 ## Search drug
 1. Use the search tool and select the field by which you want to search.

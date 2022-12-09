@@ -28,7 +28,7 @@ If you get an error with ```npm install```, run ```npm config set legacy-peer-de
 
 ### To run the tests:
 
-1- ```cd UserTests```
+1- ```cd MedifindTests```
 
 2- run ```dotnet test```
 If you get an error with ```dotnet test```, follow the instructions in the terminal to install missing dependencies and run ```dotnet test``` again

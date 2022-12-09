@@ -9,7 +9,7 @@ class Header extends Navhelper {
     super(props);
     this.state = {
       filter: "name",
-      inputText: " ",
+      inputText: "",
     };
 
     this.onFilterChange = this.onFilterChange.bind(this);
@@ -110,15 +110,23 @@ class Header extends Navhelper {
                                 required
                               />
                               <div className="input-group-append pr-5">
-                                <button type="submit">
-                                  {" "}
-                                  <img
-                                    src={
-                                      process.env.PUBLIC_URL +
-                                      "/assets/img/SearchIcon.svg"
+                                <button>
+                                  <a
+                                    href={
+                                      "/search-results?filter=" +
+                                      this.state.filter +
+                                      "&text=" +
+                                      this.state.inputText
                                     }
-                                    alt="searchIcon"
-                                  />
+                                  >
+                                    <img
+                                      src={
+                                        process.env.PUBLIC_URL +
+                                        "/assets/img/SearchIcon.svg"
+                                      }
+                                      alt="searchIcon"
+                                    />
+                                  </a>
                                 </button>
                               </div>
                             </div>
@@ -128,9 +136,7 @@ class Header extends Navhelper {
                     </form>
                   </div>
                   {/* SearchBar */}
-                  <ul className="navbar-nav mr-3">
-                    
-                  </ul>
+                  <ul className="navbar-nav mr-3"></ul>
 
                   <a href="/saved-list">
                     <img

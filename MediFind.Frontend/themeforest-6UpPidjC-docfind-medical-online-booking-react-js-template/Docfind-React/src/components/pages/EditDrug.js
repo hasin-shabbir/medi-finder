@@ -6,6 +6,7 @@ import Breadcrumbs from "../layouts/Breadcrumbs";
 const pagelocation = "Edit Medicine";
 
 const EditDrug = (isEdit = false) => {
+  const [drugId, setDrugId] = useState(0);
   const [drugName, setDrugName] = useState("");
   const [dosage, setDosage] = useState("");
   const [caution, setCaution] = useState("");
@@ -25,7 +26,19 @@ const EditDrug = (isEdit = false) => {
 
   const onSubmitForm = async () => {
     const url =
-      "http://ec2-3-28-239-202.me-central-1.compute.amazonaws.com/api/drugs";
+      "http://ec2-3-28-239-202.me-central-1.compute.amazonaws.com/api/drugs/" +
+      drugId;
+    const body = {};
+    if (drugName != "") body["drugName"] = drugName;
+    if (manufacturer != "") body["manufacturer"] = manufacturer;
+    if (purpose != "") body["purpose"] = purpose;
+    if (usage != "") body["usage"] = usage;
+    if (dosage != "") body["dosage"] = dosage;
+    if (storage != "") body["storage"] = storage;
+    if (avoidReasons != "") body["avoidReasons"] = avoidReasons;
+    if (details != "") body["details"] = details;
+    if (ingredients != "") body["ingredients"] = ingredients;
+
     const options = {
       method: "PUT",
       headers: {
@@ -34,18 +47,7 @@ const EditDrug = (isEdit = false) => {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
-      body: JSON.stringify({
-        drugName,
-        manufacturer,
-        purpose,
-        usage,
-        dosage,
-        sideEffects,
-        storage,
-        avoidReasons,
-        details,
-        ingredients,
-      }),
+      body: JSON.stringify(body),
     };
     try {
       console.log(options);
@@ -61,6 +63,18 @@ const EditDrug = (isEdit = false) => {
       <Breadcrumbs breadcrumb={{ pagename: pagelocation }} />
       <div className={styles.container}>
         <form>
+          <div style={{ display: "inline-block" }}>
+            <label>Drug Id</label>
+            <input
+              className={styles.addDrugInfoSmall}
+              required
+              type="number"
+              name="Drug Id"
+              placeholder="Drug Name"
+              value={drugId}
+              onChange={(e) => setDrugId(e.target.value)}
+            />
+          </div>
           <div style={{ display: "inline-block" }}>
             <label>Drug Name</label>
             <input

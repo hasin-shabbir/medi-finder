@@ -106,7 +106,7 @@ class Headertwo extends Navhelper {
                                 required
                               />
                               <div className="input-group-append pr-5">
-                                <button type="submit">
+                                <button>
                                   <a
                                     href={
                                       "/search-results?filter=" +
@@ -132,9 +132,7 @@ class Headertwo extends Navhelper {
                     </form>
                   </div>
                   {/* SearchBar */}
-                  <ul className="navbar-nav mr-3">
-                    
-                  </ul>
+                  <ul className="navbar-nav mr-3"></ul>
                   <div className="sigma_header-controls style-2">
                     <ul className="sigma_header-controls-inner">
                       <li className="d-none d-sm-block">

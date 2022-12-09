@@ -6,15 +6,17 @@ using MediFind.Backend;
 
 namespace SaveDrugTests;
 
+//driver class to test save drug functionality
 public class SaveDrugTestClass
 {   
-    private ITestOutputHelper output;
-    private Dictionary<string,string> myconfig;
-    private Mock<IMediator> mock_mediator;
-    private IConfigurationRoot config;
-    private DbContext curr_context;
-    private RepositoryManager repo_manager;
+    private ITestOutputHelper output; //output helper to log debugging output
+    private Dictionary<string,string> myconfig; //config dictionary for the current context
+    private Mock<IMediator> mock_mediator; //mock mediator for current context
+    private IConfigurationRoot config; //configuration settings for current db context
+    private DbContext curr_context; //current db context
+    private RepositoryManager repo_manager; //repository manager for the current context
     
+    //constructor to initialize all private variables
     public SaveDrugTestClass(ITestOutputHelper output){
         this.output = output;
         this.myconfig = new Dictionary<string, string> {
@@ -28,23 +30,29 @@ public class SaveDrugTestClass
 
     }
 
+    //valid user and drug id
     [Theory]
     [InlineData((long)5, 9)]
-    public async void SaveAndGetSavedDrugTest(long userId, int drugid) {    
+    public async void SaveAndGetSavedDrugTest(long userId, int drugid) { 
+        //save a drug in db   
         await repo_manager.User.SaveDrug(userId,drugid);
 
+        //get the saved drugs for the specified user
         var response = await repo_manager.User.GetSavedDrugs(userId);
+        //convert response to an iteratable list
         var res_list = response.ToList();
+        //variable to see if test passes
         bool passing = false;
+        //search for the saved drug's id in user's saved drugs
         foreach (var res in res_list){
             if (res.DrugId == drugid){
                 passing = true;
                 break;
             }
         }
-
+        //delete the drug from user's list which was saved just for testing
         await repo_manager.User.DeleteUSD(userId,drugid);
-
+        //assertion
         Assert.True(passing);
     }
 

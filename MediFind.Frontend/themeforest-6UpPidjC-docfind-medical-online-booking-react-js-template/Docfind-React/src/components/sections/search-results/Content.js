@@ -36,7 +36,12 @@ class Content extends Component {
               <div className="col-md-3">
                 <div className="sigma_team-thumb">
                   <img
-                    src={process.env.PUBLIC_URL + "/assets/img/drug/drug1.jpeg"}
+                    src={
+                      process.env.PUBLIC_URL +
+                      "/assets/img/drug/" +
+                      item.drugId +
+                      ".jpg"
+                    }
                     alt={item.name}
                   />
                 </div>

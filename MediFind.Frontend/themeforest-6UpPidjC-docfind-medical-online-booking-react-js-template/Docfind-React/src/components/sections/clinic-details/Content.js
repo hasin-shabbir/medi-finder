@@ -7,6 +7,9 @@ const Content = (props) => {
   const detailId = props.detailId;
   const [drug, setDrug] = useState([]);
 
+  const sessionId = localStorage.getItem("sessionId");
+  const isUser = sessionId != null;
+
   useEffect(() => {
     const fetchData = async () => {
       const url =
@@ -34,11 +37,12 @@ const Content = (props) => {
 
   const saveDrug = async () => {
     const url =
-      "http://ec2-3-28-221-142.me-central-1.compute.amazonaws.com/api/self/saved-drugs/" +
+      "http://ec2-3-28-221-142.me-central-1.compute.amazonaws.com/api/users/self/saved-drugs/" +
       detailId;
     const options = {
       method: "POST",
       headers: {
+        Authorization: sessionId,
         Accept: "application/json",
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
@@ -185,7 +189,7 @@ const Content = (props) => {
           </div>
           {/* Sidebar Start */}
           <div className="col-lg-4">
-            <button onClick={saveDrug}>Save Drug</button>
+            {isUser && <button onClick={saveDrug}>Save Drug</button>}
             <div style={{ height: 30 }} />
             <div className="sidebar style-10 mt-5 mt-lg-0">
               {/* Request For QR Code */}

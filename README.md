@@ -15,6 +15,8 @@ http://ec2-3-28-221-142.me-central-1.compute.amazonaws.com/swagger/index.html
 The front-end, on the other hand, is only available for hosting locally. Follow the steps outlined below to get it running.
 
 
+
+
 ### To run back-end locally:
 
 1- ```cd MediFind.Backend```

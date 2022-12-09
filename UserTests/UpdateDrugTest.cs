@@ -8,15 +8,17 @@ using Microsoft.AspNetCore.Http;
 
 namespace UpdateDrugTests;
 
+//driver to test update drug functionality
 public class UpdateDrugTestClass
 {   
-    private ITestOutputHelper output;
-    private Dictionary<string,string> myconfig;
-    private Mock<IMediator> mock_mediator;
-    private IConfigurationRoot config;
-    private DbContext curr_context;
-    private RepositoryManager repo_manager;
+    private ITestOutputHelper output; //output helper to log debugging output
+    private Dictionary<string,string> myconfig; //config dictionary for the current context
+    private Mock<IMediator> mock_mediator; //mock mediator for current context
+    private IConfigurationRoot config; //configuration settings for current db context
+    private DbContext curr_context; //current db context
+    private RepositoryManager repo_manager; //repository manager for the current context
     
+    //constructor to initialize all private variables
     public UpdateDrugTestClass(ITestOutputHelper output){
         this.output = output;
         this.myconfig = new Dictionary<string, string> {
@@ -30,17 +32,21 @@ public class UpdateDrugTestClass
 
     }
 
+    //valid auth tokens
     [Theory]
     [InlineData("h0FsK78HXYCMTUSOKMDB1g")]
     [InlineData("q3p+BwCNBq0kVgZLU+oMZw")]
     [InlineData("ZGV0078ibQmYU5XWQWlpsg")]
+    //no admin privilege update drug test
     public void updateDrugTest_adminFail(String authheader){
+        //controller to invoke endpoint
         var newController = new MediFind.Backend.Features.Drug.DrugController(this.mock_mediator.Object,this.repo_manager);
-        
+        //set auth header in the current http context
         newController.ControllerContext = new Microsoft.AspNetCore.Mvc.ControllerContext();
         newController.ControllerContext.HttpContext = new DefaultHttpContext();
         newController.ControllerContext.HttpContext.Request.Headers["Authorization"] = authheader;
 
+        //create a drug to be updated in db
         var drug = new DrugModel();
         drug.DrugName = "updatedDrug1";
         drug.Manufacturer = "updatedMan1";
@@ -53,21 +59,26 @@ public class UpdateDrugTestClass
         drug.Details = "lorem ipsum";
         drug.Ingredients = "lorem";
 
+        //assertion of bad http request exception
         Task response;
         Assert.ThrowsAsync<BadHttpRequestException>(()=>response = newController.UpdateDrug((long)2, drug,""));
     }
 
+    //invalid auth tokens
     [Theory]
     [InlineData("8ehrfg7")]
     [InlineData(null)]
+    //update drug not logged in test
     public void updateDrugTest_authFail(String authheader){
+        //controller to invoke endpoint
         var newController = new MediFind.Backend.Features.Drug.DrugController(this.mock_mediator.Object,this.repo_manager);
-        
+        //set auth header and user id in the current http context
         newController.ControllerContext = new Microsoft.AspNetCore.Mvc.ControllerContext();
         newController.ControllerContext.HttpContext = new DefaultHttpContext();
         newController.ControllerContext.HttpContext.Request.Headers["Authorization"] = authheader;
         newController.ControllerContext.HttpContext.Items["UserId"] = null;
 
+        //create a drug to be updated in db
         var drug = new DrugModel();
         drug.DrugName = "updatedDrug1";
         drug.Manufacturer = "updatedMan1";
@@ -80,6 +91,7 @@ public class UpdateDrugTestClass
         drug.Details = "lorem ipsum";
         drug.Ingredients = "lorem";
 
+        //assertion of bad http request exception
         Task response;
         Assert.ThrowsAsync<BadHttpRequestException>(()=>response = newController.UpdateDrug((long)2, drug,""));
     }

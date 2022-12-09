@@ -26,6 +26,8 @@ If you get an error with ```npm install```, run ```npm config set legacy-peer-de
 
 3- run ```npm start```
 
+4- Refer to ```USER_GUIDE.md``` for a guide on using the front-end
+
 ### To run the tests:
 
 1- ```cd MedifindTests```

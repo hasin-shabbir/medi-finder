@@ -16,15 +16,6 @@ The front-end, on the other hand, is only available for hosting locally. Follow 
 
 
 
-
-### To run back-end locally:
-
-1- ```cd MediFind.Backend```
-
-2- run ```dotnet start```
-
-
-
 ### To run front-end locally:
 
 1- ```cd MediFind.Frontend/themeforest-6UpPidjC-docfind-medical-online-booking-react-js-template/Docfind-React```
@@ -42,3 +33,12 @@ If you get an error with ```npm install```, run ```npm config set legacy-peer-de
 
 2- run ```dotnet test```
 If you get an error with ```dotnet test```, follow the instructions in the terminal to install missing dependencies and run ```dotnet test``` again
+
+
+
+### To run back-end locally (not necessary):
+
+1- ```cd MediFind.Backend```
+
+2- run ```dotnet start```
+

@@ -38,7 +38,7 @@ const ScrollToTop = withRouter(({ children, location: { pathname } }) => {
 
 function App() {
   return (
-    <Router basename={"/medi-finder"}>
+    <Router>
       <Suspense fallback={<div></div>}>
         <ScrollToTop>
           <Switch>

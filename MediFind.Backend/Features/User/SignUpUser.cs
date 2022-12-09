@@ -11,7 +11,7 @@ public class SignUpUser
     {
         [EmailAddress]
         public string Email { get; set; } = null!;
-        [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$")]
+        [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")]
         public string Password { get; set; } = null!;
         public string FullName { get; set; } = null!;
     }

@@ -20,7 +20,7 @@ public class DrugController : ControllerBase
 
     [HttpPost]
     [Auth]
-    public async Task<CreateDrugResponse> CreateDrug(CreateDrugCommand command)
+    public async Task<CreateDrugResponse> CreateDrug(CreateDrugCommand command, [FromHeader] string Authorization)
     {
         long? userId = (long?)HttpContext.Items["UserId"];
 
@@ -48,14 +48,14 @@ public class DrugController : ControllerBase
             return await _repositoryManager.Drug.GetDrugsSummaryByIngredients(ingredients);
 
         if (!string.IsNullOrEmpty(manufacturer))
-            return await _repositoryManager.Drug.GetDrugsSummaryByIngredients(manufacturer);
+            return await _repositoryManager.Drug.GetDrugsSummaryByManufacturer(manufacturer);
 
         return Enumerable.Empty<DrugModel>();
     }
 
     [HttpPut("{drugId}")]
     [Auth]
-    public async Task UpdateDrug([FromRoute] long drugId, DrugModel drug)
+    public async Task UpdateDrug([FromRoute] long drugId, DrugModel drug, [FromHeader] string Authorization)
     {
         long? userId = (long?)HttpContext.Items["UserId"];
 
@@ -71,7 +71,7 @@ public class DrugController : ControllerBase
 
     [HttpDelete("{drugId}")]
     [Auth]
-    public async Task DeleteDrug([FromRoute] long drugId)
+    public async Task DeleteDrug([FromRoute] long drugId, [FromHeader] string Authorization)
     {
         long? userId = (long?)HttpContext.Items["UserId"];
 

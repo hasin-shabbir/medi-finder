@@ -42,7 +42,7 @@ public class UserController : ControllerBase
 
     [HttpPost("self/saved-drugs/{drugId}")]
     [Auth]
-    public async Task SaveDrug([FromRoute] long drugId)
+    public async Task SaveDrug([FromRoute] long drugId, [FromHeader] string Authorization)
     {
         long? userId = (long?)HttpContext.Items["UserId"];
 
@@ -53,7 +53,7 @@ public class UserController : ControllerBase
 
     [HttpPut("self")]
     [Auth]
-    public async Task ChangePassword([FromBody] string password)
+    public async Task ChangePassword([FromBody] string password, [FromHeader] string Authorization)
     {
         long? userId = (long?)HttpContext.Items["UserId"];
 
@@ -64,7 +64,7 @@ public class UserController : ControllerBase
 
     [HttpGet("self/saved-drugs")]
     [Auth]
-    public async Task<IEnumerable<DrugModel>> GetSavedDrugs()
+    public async Task<IEnumerable<DrugModel>> GetSavedDrugs([FromHeader] string Authorization)
     {
         long? userId = (long?)HttpContext.Items["UserId"];
 

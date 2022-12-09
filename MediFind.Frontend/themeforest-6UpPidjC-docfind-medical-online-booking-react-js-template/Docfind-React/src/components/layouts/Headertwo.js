@@ -9,7 +9,7 @@ class Headertwo extends Navhelper {
     super(props);
     this.state = {
       filter: "name",
-      inputText: " ",
+      inputText: "",
     };
     this.onFilterChange = this.onFilterChange.bind(this);
     this.onInputTextChange = this.onInputTextChange.bind(this);
@@ -106,15 +106,23 @@ class Headertwo extends Navhelper {
                                 required
                               />
                               <div className="input-group-append pr-5">
-                                <button type="submit">
-                                  {" "}
-                                  <img
-                                    src={
-                                      process.env.PUBLIC_URL +
-                                      "/assets/img/SearchIcon.svg"
+                                <button>
+                                  <a
+                                    href={
+                                      "/search-results?filter=" +
+                                      this.state.filter +
+                                      "&text=" +
+                                      this.state.inputText
                                     }
-                                    alt="searchIcon"
-                                  />
+                                  >
+                                    <img
+                                      src={
+                                        process.env.PUBLIC_URL +
+                                        "/assets/img/SearchIcon.svg"
+                                      }
+                                      alt="searchIcon"
+                                    />
+                                  </a>
                                 </button>
                               </div>
                             </div>
@@ -124,61 +132,7 @@ class Headertwo extends Navhelper {
                     </form>
                   </div>
                   {/* SearchBar */}
-                  <ul className="navbar-nav mr-3">
-                    {/* Data */}
-                    {navigation.map((item, i) => (
-                      <li
-                        key={i}
-                        className={
-                          item.child === true
-                            ? "menu-item menu-item-has-children"
-                            : "menu-item"
-                        }
-                      >
-                        {item.child === true ? (
-                          <Link to="#">{item.linkText}</Link>
-                        ) : (
-                          <Link to={item.link}>{item.linkText}</Link>
-                        )}
-                        {item.child === true ? (
-                          <ul className="sub-menu">
-                            {item.submenu.map((item, i) => (
-                              <li
-                                key={i}
-                                className={
-                                  item.child === true
-                                    ? "menu-item menu-item-has-children"
-                                    : "menu-item"
-                                }
-                              >
-                                {item.child === true ? (
-                                  <Link to="#">{item.linkText}</Link>
-                                ) : (
-                                  <Link to={item.link}>{item.linkText}</Link>
-                                )}
-                                {item.child === true ? (
-                                  <ul className="sub-menu">
-                                    {item.submenu.map((item, i) => (
-                                      <li className="menu-item" key={i}>
-                                        <Link to={item.link}>
-                                          {item.linkText}
-                                        </Link>
-                                      </li>
-                                    ))}
-                                  </ul>
-                                ) : (
-                                  ""
-                                )}
-                              </li>
-                            ))}
-                          </ul>
-                        ) : (
-                          ""
-                        )}
-                      </li>
-                    ))}
-                    {/* Data */}
-                  </ul>
+                  <ul className="navbar-nav mr-3"></ul>
                   <div className="sigma_header-controls style-2">
                     <ul className="sigma_header-controls-inner">
                       <li className="d-none d-sm-block">

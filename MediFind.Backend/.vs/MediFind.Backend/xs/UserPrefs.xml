@@ -1,12 +1,13 @@
 ﻿<Properties StartupConfiguration="{6E039622-17BA-4DBC-B808-A45C247E2601}|Default">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="appsettings.json">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
       <File FileName="Features/Drug/DrugController.cs" />
       <File FileName="Features/Drug/DrugRepository.cs" />
-      <File FileName="Program.cs" />
       <File FileName="Properties/launchSettings.json" />
-      <File FileName="appsettings.json" Line="12" Column="2" />
+      <File FileName="appsettings.json" />
+      <File FileName="Program.cs" Line="33" Column="18" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,17 +23,16 @@
                 <Node name="User" expanded="True" />
               </Node>
               <Node name="Properties" expanded="True" />
-              <Node name="appsettings.json" selected="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.MediFind.Backend PreferredExecutionTarget="/Applications/Firefox.app" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

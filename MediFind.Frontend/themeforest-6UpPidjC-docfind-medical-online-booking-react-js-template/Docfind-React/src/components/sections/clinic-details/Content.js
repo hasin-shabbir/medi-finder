@@ -32,6 +32,27 @@ const Content = (props) => {
     fetchData();
   }, []);
 
+  const saveDrug = async () => {
+    const url =
+      "http://ec2-3-28-221-142.me-central-1.compute.amazonaws.com/api/self/saved-drugs/" +
+      detailId;
+    const options = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    };
+    try {
+      const response = await fetch(url, options);
+      const body = await response.json();
+      setDrug(body);
+    } catch (error) {
+      throw error;
+    }
+  };
+
   return (
     <div className="section sigma_post-details">
       <div className="container">
@@ -164,6 +185,8 @@ const Content = (props) => {
           </div>
           {/* Sidebar Start */}
           <div className="col-lg-4">
+            <button onClick={saveDrug}>Save Drug</button>
+            <div style={{ height: 30 }} />
             <div className="sidebar style-10 mt-5 mt-lg-0">
               {/* Request For QR Code */}
               <div className="widget">

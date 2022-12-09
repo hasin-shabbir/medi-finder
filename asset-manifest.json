@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/medi-finder/static/css/main.350ede49.css",
-    "main.js": "/medi-finder/static/js/main.7e0c48e1.js",
+    "main.js": "/medi-finder/static/js/main.1631ccaa.js",
     "static/js/809.68133ab1.chunk.js": "/medi-finder/static/js/809.68133ab1.chunk.js",
     "static/js/595.53c3ac72.chunk.js": "/medi-finder/static/js/595.53c3ac72.chunk.js",
-    "static/js/189.0a042195.chunk.js": "/medi-finder/static/js/189.0a042195.chunk.js",
+    "static/js/189.0174ef32.chunk.js": "/medi-finder/static/js/189.0174ef32.chunk.js",
     "static/js/635.119198cb.chunk.js": "/medi-finder/static/js/635.119198cb.chunk.js",
     "static/js/602.3f3e9cc0.chunk.js": "/medi-finder/static/js/602.3f3e9cc0.chunk.js",
     "static/css/104.83a43d3d.chunk.css": "/medi-finder/static/css/104.83a43d3d.chunk.css",
     "static/js/104.81085be2.chunk.js": "/medi-finder/static/js/104.81085be2.chunk.js",
     "static/css/551.83a43d3d.chunk.css": "/medi-finder/static/css/551.83a43d3d.chunk.css",
-    "static/js/551.0680bcb1.chunk.js": "/medi-finder/static/js/551.0680bcb1.chunk.js",
+    "static/js/551.03395783.chunk.js": "/medi-finder/static/js/551.03395783.chunk.js",
     "static/css/768.83a43d3d.chunk.css": "/medi-finder/static/css/768.83a43d3d.chunk.css",
-    "static/js/768.47b50c36.chunk.js": "/medi-finder/static/js/768.47b50c36.chunk.js",
+    "static/js/768.7b55acb7.chunk.js": "/medi-finder/static/js/768.7b55acb7.chunk.js",
     "static/css/91.83a43d3d.chunk.css": "/medi-finder/static/css/91.83a43d3d.chunk.css",
     "static/js/91.b9e4e96c.chunk.js": "/medi-finder/static/js/91.b9e4e96c.chunk.js",
     "static/css/30.83a43d3d.chunk.css": "/medi-finder/static/css/30.83a43d3d.chunk.css",
@@ -55,18 +55,18 @@
     "static/media/flaticon.woff2?": "/medi-finder/static/media/flaticon.bb8da26931eb53b490e8.woff2",
     "index.html": "/medi-finder/index.html",
     "main.350ede49.css.map": "/medi-finder/static/css/main.350ede49.css.map",
-    "main.7e0c48e1.js.map": "/medi-finder/static/js/main.7e0c48e1.js.map",
+    "main.1631ccaa.js.map": "/medi-finder/static/js/main.1631ccaa.js.map",
     "809.68133ab1.chunk.js.map": "/medi-finder/static/js/809.68133ab1.chunk.js.map",
     "595.53c3ac72.chunk.js.map": "/medi-finder/static/js/595.53c3ac72.chunk.js.map",
-    "189.0a042195.chunk.js.map": "/medi-finder/static/js/189.0a042195.chunk.js.map",
+    "189.0174ef32.chunk.js.map": "/medi-finder/static/js/189.0174ef32.chunk.js.map",
     "635.119198cb.chunk.js.map": "/medi-finder/static/js/635.119198cb.chunk.js.map",
     "602.3f3e9cc0.chunk.js.map": "/medi-finder/static/js/602.3f3e9cc0.chunk.js.map",
     "104.83a43d3d.chunk.css.map": "/medi-finder/static/css/104.83a43d3d.chunk.css.map",
     "104.81085be2.chunk.js.map": "/medi-finder/static/js/104.81085be2.chunk.js.map",
     "551.83a43d3d.chunk.css.map": "/medi-finder/static/css/551.83a43d3d.chunk.css.map",
-    "551.0680bcb1.chunk.js.map": "/medi-finder/static/js/551.0680bcb1.chunk.js.map",
+    "551.03395783.chunk.js.map": "/medi-finder/static/js/551.03395783.chunk.js.map",
     "768.83a43d3d.chunk.css.map": "/medi-finder/static/css/768.83a43d3d.chunk.css.map",
-    "768.47b50c36.chunk.js.map": "/medi-finder/static/js/768.47b50c36.chunk.js.map",
+    "768.7b55acb7.chunk.js.map": "/medi-finder/static/js/768.7b55acb7.chunk.js.map",
     "91.83a43d3d.chunk.css.map": "/medi-finder/static/css/91.83a43d3d.chunk.css.map",
     "91.b9e4e96c.chunk.js.map": "/medi-finder/static/js/91.b9e4e96c.chunk.js.map",
     "30.83a43d3d.chunk.css.map": "/medi-finder/static/css/30.83a43d3d.chunk.css.map",
@@ -84,6 +84,6 @@
   },
   "entrypoints": [
     "static/css/main.350ede49.css",
-    "static/js/main.7e0c48e1.js"
+    "static/js/main.1631ccaa.js"
   ]
 }

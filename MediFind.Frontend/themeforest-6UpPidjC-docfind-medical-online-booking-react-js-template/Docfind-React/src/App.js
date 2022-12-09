@@ -1,6 +1,6 @@
 import React, { Suspense, useLayoutEffect } from "react";
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Route,
   Switch,
   withRouter,
@@ -38,7 +38,7 @@ const ScrollToTop = withRouter(({ children, location: { pathname } }) => {
 
 function App() {
   return (
-    <Router>
+    <Router basename="/medi-finder">
       <Suspense fallback={<div></div>}>
         <ScrollToTop>
           <Switch>

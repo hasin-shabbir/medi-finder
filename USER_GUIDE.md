@@ -26,7 +26,7 @@
 ## Save drug to profile
 NOTE: You must be logged in to use this function
 1. Search for a drug
-2. Click on the heart icon next to the drug
+2. Click on the save button next to the drug
 
 ## View saved drugs
 NOTE: You must be logged in to use this function

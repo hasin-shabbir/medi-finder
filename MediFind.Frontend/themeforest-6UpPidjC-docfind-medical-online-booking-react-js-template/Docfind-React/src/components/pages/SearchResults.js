@@ -19,7 +19,7 @@ const SearchResults = () => {
   useEffect(() => {
     const fetchData = async () => {
       const url =
-        "http://ec2-3-28-239-202.me-central-1.compute.amazonaws.com/api/drugs?" +
+        "http://ec2-3-28-221-142.me-central-1.compute.amazonaws.com/api/drugs?" +
         searchParams.get("filter") +
         "=" +
         searchParams.get("text");

@@ -25,7 +25,7 @@ const AddDrug = (isEdit = false) => {
 
   const onSubmitForm = async () => {
     const url =
-      "http://ec2-3-28-239-202.me-central-1.compute.amazonaws.com/api/drugs";
+      "http://ec2-3-28-221-142.me-central-1.compute.amazonaws.com/api/drugs";
     const options = {
       method: "POST",
       headers: {

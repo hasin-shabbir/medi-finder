@@ -49,7 +49,7 @@ const SignUp = () => {
   const submitSignupForm = async () => {
     setError("");
     const url =
-      "http://ec2-3-28-239-202.me-central-1.compute.amazonaws.com/api/users/sign-up";
+      "http://ec2-3-28-221-142.me-central-1.compute.amazonaws.com/api/users/sign-up";
     const options = {
       method: "POST",
       headers: {

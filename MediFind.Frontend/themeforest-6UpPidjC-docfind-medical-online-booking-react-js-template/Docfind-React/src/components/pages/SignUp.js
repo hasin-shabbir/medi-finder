@@ -96,7 +96,7 @@ const SignUp = () => {
             type="text"
             name="firstname"
             required
-            placeholder="First Name"
+            placeholder="*First Name"
             value={firstname}
             onChange={(e) => setFirstname(e.target.value)}
           />
@@ -106,7 +106,7 @@ const SignUp = () => {
             type="text"
             name="lastname"
             required
-            placeholder="Last Name"
+            placeholder="*Last Name"
             value={lastname}
             onChange={(e) => setLastname(e.target.value)}
           />
@@ -116,7 +116,7 @@ const SignUp = () => {
             type="email"
             name="email"
             required
-            placeholder="Email"
+            placeholder="*Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -125,7 +125,7 @@ const SignUp = () => {
           <input
             type="password"
             name="password"
-            placeholder="Create Password"
+            placeholder="*Create Password"
             minlength="10"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -140,14 +140,14 @@ const SignUp = () => {
             type="password"
             name="confirmPassword"
             required
-            placeholder="Confirm Password"
+            placeholder="*Confirm Password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />{" "}
           {error2 && (
             <h5 className={styles.error}>Password is not the same!</h5>
           )}
-          <h3 className={styles.smallText}> Date of Birth:</h3>
+          <h3 className={styles.smallText}> *Date of Birth:</h3>
           <input
             type="date"
             name="DOB"

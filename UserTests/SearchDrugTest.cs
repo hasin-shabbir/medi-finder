@@ -42,8 +42,8 @@ public class SearchDrugTestClass
     //search by name, ingredient, and/or manufacturer
     [Theory]
     [InlineData("Benylin",null,null)]
-    [InlineData(null,"str",null)]
-    [InlineData(null,"Str",null)]
+    [InlineData(null,"para",null)]
+    [InlineData(null,"Para",null)]
     [InlineData(null,null,"str")]
     [InlineData(null,null,"Str")]
     public void SearchDrugTest(String? name,String? ingredients, String? manufacturer){        
@@ -58,7 +58,7 @@ public class SearchDrugTestClass
 
         if (name!=null){
             foreach (var res in res_list){
-                if (res.DrugName==null || !(res.DrugName.Contains(name))){
+                if (res.DrugName==null || !(res.DrugName.ToLower().Contains(name.ToLower()))){
                     name_pass = false;
                     break;
                 }
@@ -67,7 +67,7 @@ public class SearchDrugTestClass
 
         if (name_pass && ingredients!=null){
             foreach (var res in res_list){
-                if (res.Ingredients==null || !(res.Ingredients.Contains(ingredients))){
+                if (res.Ingredients==null || !(res.Ingredients.ToLower().Contains(ingredients.ToLower()))){
                     ing_pass = false;
                     break;
                 }
@@ -76,7 +76,7 @@ public class SearchDrugTestClass
 
         if (name_pass && ing_pass && manufacturer!=null){
             foreach (var res in res_list){
-                if (res.Manufacturer==null || !(res.Manufacturer.Contains(manufacturer))){
+                if (res.Manufacturer==null || !(res.Manufacturer.ToLower().Contains(manufacturer.ToLower()))){
                     manufacturer_pass = false;
                     break;
                 }
@@ -90,7 +90,7 @@ public class SearchDrugTestClass
 
     //TODO:
     //0. Comments
-    //1. case-sensitivity check
+    //1. case-sensitivity check!! esp search drug and then elsewhere
     //2. createDrug test success
     //3. mini-tests
     //4. validation, integration, unit tests

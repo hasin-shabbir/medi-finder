@@ -1,6 +1,6 @@
 # Requirement Gathering Data
 
-## Survey responses
+## Survey responses (55 university community members surveyed)
 <ol>
   <li>The survey gathered the occupation and age groups of the respondents to identify any target group. However, the age groups and occupations varied so much that no one group stood out.</li>
   <li>For the features, the survey asked "What kind of Drug Information is most useful to you for prescription drugs?". The most common answers were name, ingredients, dosage, side effects. </li>
